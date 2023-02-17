@@ -7,6 +7,7 @@ multiplicaci√≥n (*), y potencia de un exponente entero positivo (**). La divisi√
 
 ## Video
 
+https://www.loom.com/share/b18eaa21c80d46b5bcb6a8a9db7eb593
 
 ## IDE
 
