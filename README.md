@@ -53,3 +53,4 @@ https://boostorg.jfrog.io/artifactory/main/release/1.81.0/source/
 ```
 
 # Referencias
+- [Qt in Clion](https://www.jetbrains.com/help/clion/qt-tutorial.html#qt-setup-in-clion)
