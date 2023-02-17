@@ -3,7 +3,7 @@
 #include "funtrans/funtrans.hpp"
 
 int main(int argc, char *argv[]){
-    cout << funtrans::pi_t.str() << endl;
-    cout << funtrans::factorial_t(9) << endl;
+    cout <<  std::fixed << funtrans::pi_t.str() << endl;
+    cout << std::fixed << funtrans::factorial_t(50).str(0) << endl;
     return 0;
 }
