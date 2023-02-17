@@ -5,7 +5,7 @@
 #ifndef FUNTRANS_CALCULATORPP_INITGUI_H
 #define FUNTRANS_CALCULATORPP_INITGUI_H
 
-#include "mainwindow.h"
+#include "mainwindow.hpp"
 #include <QApplication>
 
 

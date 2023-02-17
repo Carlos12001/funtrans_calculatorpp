@@ -1,13 +1,7 @@
 //
 // Created by carlo on 2/16/2023.
 //
+#include "../header.hpp"
+#include "funtrans.hpp"
 
-#include "funtrans.h"
-
-double funtrans::divi_t(double numb) {
-    return 0;
-}
-
-double funtrans::factorial_t(double num) {
-    return 0;
-}
+const decimal_50_digits funtrans::pi_t = 3.1415926535897932384626433832795028841971693993751;

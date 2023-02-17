@@ -20,7 +20,7 @@ find_package(Qt6 COMPONENTS
         REQUIRED)
 
 # Select all files
-file(GLOB_RECURSE SOURCE_FILES true "./*.cpp" "./*.h" "./*.ui" "./*.qrc")
+file(GLOB_RECURSE SOURCE_FILES true "./*.cpp" "./*.hpp" "./*.ui" "./*.qrc")
 
 # Create Var PROJECT_SOURCES
 set(PROJECT_SOURCES ${SOURCE_FILES})
