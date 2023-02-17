@@ -3,6 +3,7 @@
 //
 #include "../header.hpp"
 #include "funtrans.hpp"
+#include <cmath>
 
 const decimal_50_digits funtrans::pi_t = 3.1415926535897932384626433832795028841971693993751;
 
@@ -12,38 +13,74 @@ const int funtrans::iteration_max_t = 2500;
 
 decimal_50_digits funtrans::factorial_t(decimal_50_digits x) {
     decimal_50_digits result = 1;
-    for (int i = 0; 0 < x && i <= iteration_max_t; ++i)
+    for (int i = 0; i <= iteration_max_t; ++i) {
+        if(0==x)
+            break;
         result *= x--;
+    }
     return result;
 }
 
-//decimal_50_digits funtrans::divi_t(decimal_50_digits x) {
-//    decimal_50_digits result = 0;
-//    int iteration_counter = 0;
-//
-//    decimal_50_digits eps = 2.2204 * 0.0000000000000001;
-//
-//    return result;
-//}
-//
-//decimal_50_digits funtrans::power_t(decimal_50_digits x, decimal_50_digits y) {
-//    decimal_50_digits result = x;
-//
-//    // Check unnecessary iterations
-//    if(x==0 || x== 1)
-//        return x;
-//
-//    // Check if y == 0
-//    if(y==0)
-//        return 1;
-//
-//    // Check if y is an integer and positive
-//    if (std::is_integral<decltype(y)>::value && y > 0) {
-//        for (int i = 0; i < y && i < iteration_max_t; ++i)
-//            result *= result;
-//    } else {
-//
-//    }
-//
-//    return result;
-//}
+decimal_50_digits funtrans::divi_t(decimal_50_digits x) {
+    int iteration_counter = 0;
+
+    // Check 1/0
+    if(x==0)
+        return 0;
+
+    // Check eps condition
+    decimal_50_digits eps = 2.2204 * 0.0000000000000001;
+    int exponent_eps = exponent_eps_aux_divi_t(x);
+    if (exponent_eps==0)
+        return 0;
+
+    // Set the x_0 with eps condition
+    decimal_50_digits previous_x_k = power_t(eps, exponent_eps);
+    decimal_50_digits x_k;
+
+    for (int i = 0; i < iteration_max_t; ++i) {
+        x_k = previous_x_k*(2 - x*previous_x_k);
+        if (abs(x_k-previous_x_k) < tol_t*abs(x_k))
+            break;
+    }
+    return x_k;
+
+}
+
+decimal_50_digits funtrans::power_t(decimal_50_digits x, decimal_50_digits y) {
+    decimal_50_digits result = 1;
+
+    // Check unnecessary iterations
+    if(x==0 || x== 1)
+        return x;
+
+    // Check if y == 0
+    if(y==0)
+        return 1;
+
+
+    // Only works for integers and positives
+    for (int i = 0; i < iteration_max_t; ++i){
+        if(i >= y)
+            break;
+        result *= x;
+    }
+
+
+    return result;
+}
+
+int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
+    if (1 <= x && x <= factorial_t(20))
+        return 2;
+    else if (x <= factorial_t(40))
+        return 4;
+    else if (x <= factorial_t(60))
+        return 8;
+    else if (x <= factorial_t(80))
+        return 11;
+    else if (x <= factorial_t(100))
+        return 15;
+    else
+        return 0;
+}

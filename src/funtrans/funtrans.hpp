@@ -21,6 +21,8 @@ public:
 
     static decimal_50_digits power_t(decimal_50_digits x, decimal_50_digits y);
 
+    static int exponent_eps_aux_divi_t(decimal_50_digits x);
+
 };
 
 
