@@ -6,7 +6,7 @@
 #define FUNTRANS_CALCULATORPP_INITGUI_H
 
 #include "mainwindow.h"
-#include "QApplication"
+#include <QApplication>
 
 
 class InitGUI {

@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include "QTime"
-#include "Qtimer"
+#include <QTime>
+#include <Qtimer>
 #include "../funtrans/funtrans.h"
 #include <iostream>
 using namespace std;
