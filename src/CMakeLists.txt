@@ -2,13 +2,17 @@
 # Put the executable into the directory bin
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# Qt configs
+# CMake configs
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-# Find all the libs
+# Find and include Boost Lib
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+
+# Find the Qt lib
 find_package(Qt6 COMPONENTS
         Core
         Gui
@@ -25,7 +29,7 @@ set(PROJECT_SOURCES ${SOURCE_FILES})
 add_executable(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCES})
 
 # Add the libraries to the .exe
-target_link_libraries(${CMAKE_PROJECT_NAME} Qt::Core Qt::Gui Qt::Widgets)
+target_link_libraries(${CMAKE_PROJECT_NAME} Qt::Core Qt::Gui Qt::Widgets ${Boost_LIBRARIES})
 
 # Config to run Qt in Windows
 if (WIN32)
