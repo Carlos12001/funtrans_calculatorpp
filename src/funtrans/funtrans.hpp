@@ -11,15 +11,17 @@ public:
 
     static const decimal_50_digits pi_t;
 
-    static const decimal_50_digits tol_t;
-
-    static const int iteration_max_t;
-
     static decimal_50_digits factorial_t(decimal_50_digits x);
 
     static decimal_50_digits divi_t(decimal_50_digits x);
 
     static decimal_50_digits power_t(decimal_50_digits x, decimal_50_digits y);
+
+private:
+
+    static const decimal_50_digits tol_t;
+
+    static const int iteration_max_t;
 
     static int exponent_eps_aux_divi_t(decimal_50_digits x);
 
