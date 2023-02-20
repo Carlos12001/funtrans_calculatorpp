@@ -22,7 +22,6 @@ decimal_50_digits funtrans::factorial_t(decimal_50_digits x) {
 }
 
 decimal_50_digits funtrans::divi_t(decimal_50_digits x) {
-    int iteration_counter = 0;
 
     // Check 1/0
     if(x==0)
@@ -42,6 +41,8 @@ decimal_50_digits funtrans::divi_t(decimal_50_digits x) {
         x_k = previous_x_k*(2 - x*previous_x_k);
         if (abs(x_k-previous_x_k) < tol_t*abs(x_k))
             break;
+        else
+            previous_x_k = x_k;
     }
     return x_k;
 
