@@ -13,9 +13,9 @@ public:
 
     static decimal_50_digits factorial_t(decimal_50_digits x);
 
-    static decimal_50_digits divi_t(decimal_50_digits x);
+    static decimal_50_digits divi_t(const decimal_50_digits& x);
 
-    static decimal_50_digits power_t(decimal_50_digits x, decimal_50_digits y);
+    static decimal_50_digits power_t(const decimal_50_digits& x, const decimal_50_digits& y);
 
 private:
 
@@ -23,7 +23,7 @@ private:
 
     static const int iteration_max_t;
 
-    static int exponent_eps_aux_divi_t(decimal_50_digits x);
+    static int exponent_eps_aux_divi_t(const decimal_50_digits& x);
 
 };
 
