@@ -3,7 +3,6 @@
 //
 #include "../header.hpp"
 #include "funtrans.hpp"
-#include <cmath>
 
 const decimal_50_digits funtrans::pi_t = 3.1415926535897932384626433832795028841971693993751;
 
@@ -21,8 +20,7 @@ decimal_50_digits funtrans::factorial_t(decimal_50_digits x) {
     return result;
 }
 
-decimal_50_digits funtrans::divi_t(decimal_50_digits x) {
-    int iteration_counter = 0;
+decimal_50_digits funtrans::divi_t(const decimal_50_digits& x) {
 
     // Check 1/0
     if(x==0)
@@ -42,13 +40,17 @@ decimal_50_digits funtrans::divi_t(decimal_50_digits x) {
         x_k = previous_x_k*(2 - x*previous_x_k);
         if (abs(x_k-previous_x_k) < tol_t*abs(x_k))
             break;
+        else
+            previous_x_k = x_k;
     }
     return x_k;
 
 }
 
-decimal_50_digits funtrans::power_t(decimal_50_digits x, decimal_50_digits y) {
+decimal_50_digits funtrans::power_t(const decimal_50_digits& x, const decimal_50_digits& y) {
     decimal_50_digits result = 1;
+
+    // e^x y In x y = -1/5
 
     // Check unnecessary iterations
     if(x==0 || x== 1)
@@ -70,7 +72,7 @@ decimal_50_digits funtrans::power_t(decimal_50_digits x, decimal_50_digits y) {
     return result;
 }
 
-int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
+int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
     if (1 <= x && x <= factorial_t(20))
         return 2;
     else if (x <= factorial_t(40))

@@ -220,11 +220,7 @@ CMakeLists.txt.user*
 
 ### VisualStudioCode ###
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-!.vscode/*.code-snippets
+.build/*
 
 # Local History for Visual Studio Code
 .history/
@@ -264,3 +260,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,c++,cmake,qt,clion+all,qtcreator,visualstudiocode
+build/.cmake/api/v1/query/client-vscode/query.json
