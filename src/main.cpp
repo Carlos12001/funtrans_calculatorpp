@@ -20,6 +20,8 @@ int main(int argc, char *argv[]) {
          funtrans::sinh_t(5).str() << "\n"
          <<
          funtrans::cosh_t(5).str();
+
+    cout << std::fixed << funtrans::sin_t(40).str() << endl;
     return InitGUI::start(argc, argv);
     return 0;
 }
