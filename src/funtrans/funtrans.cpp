@@ -133,8 +133,8 @@ decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
         decimal_50_digits S_k;
         decimal_50_digits S_k_1;
         for (int n = 0; n < iteration_max_t; n++) {
-            S_k = pow(-1,n) * ((pow(a,(2*n)+1))/(2*n)+1);
-            S_k_1 = pow(-1,(n+1)) * ((pow(a,(2*(n+1))+1))/(2*(n+1))+1);
+            S_k = power_t(-1,n) * (power_t(a, (2*n) + 1)/((2*n) + 1));
+            S_k_1 = power_t(-1,n+1) * (power_t(a, (2*(n+1)) + 1)/((2*(n+1)) + 1));
             if (abs(S_k_1 - S_k) < tol_t){
                 return S;
             }
@@ -148,10 +148,10 @@ decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
         decimal_50_digits S_k;
         decimal_50_digits S_k_1;
         for (int n = 0; n < iteration_max_t; n++) {
-            S_k = power_t(-1,n) * (1/((2*n)+1)*(power_t(a,(2*n)+1)));
-            S_k_1 = power_t(-1,(n+1)) * (1/((2*(n+1))+1)*(power_t(a,(2*(n+1))+1)));
+            S_k = power_t(-1, n) * divi_t(((2*n)+1) * power_t(a,(2*n)+1));
+            S_k_1 = power_t(-1, n+1) * divi_t(((2*(n+1))+1) * power_t(a,(2*(n+1))+1));
             if (abs(S_k_1 - S_k) < tol_t){
-                return (pi_t/2) - S;
+                return (pi_t * divi_t(2)) - S;
             }
             else{
                 S += S_k;
@@ -166,7 +166,7 @@ decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
             S_k = pow(-1,n) * (1/((2*n)+1)*(pow(a,(2*n)+1)));
             S_k_1 = pow(-1,(n+1)) * (1/((2*(n+1))+1)*(pow(a,(2*(n+1))+1)));
             if (abs(S_k_1 - S_k) < tol_t){
-                return (-1 * (pi_t/2)) - S;
+                return (-1 * (pi_t * divi_t(2))) - S;
             }
             else{
                 S += S_k;
