@@ -108,11 +108,6 @@ decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
         S_k = divi_t((2*n)+1) * power_t(((a-1)* divi_t(a+1)),2 * n);
         S_k_1 = divi_t((2*(n+1))+1) * power_t(((a-1)* divi_t(a+1)),2 * (n+1));
 
-        cout << std::fixed << "S_k: " << S_k.str() << endl;
-        cout << std::fixed << "S_k_1: " << S_k_1.str() << endl;
-        cout << std::fixed << "S: " << S.str() << endl;
-        cout << std::fixed << "n: " << n << endl;
-
         if (abs_t(( x * S_k_1)-( x * S_k)) < tol_t){
             return S + (x * S_k);
         }
@@ -121,6 +116,15 @@ decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
         }
     }
     return S;
+}
+
+decimal_50_digits  funtrans::log_t(decimal_50_digits x,decimal_50_digits y){
+    if ( x > 0 && y > 0){
+        cout << "LOG: " << endl;
+        return ln_t(y) * divi_t(ln_t(x));
+    }
+    cout << "Los valores de X y y deben ser mayores a 0" << endl;
+    return 0;
 }
 
 decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){

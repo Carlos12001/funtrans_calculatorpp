@@ -19,6 +19,8 @@ public:
 
     static decimal_50_digits ln_t(const decimal_50_digits& a);
 
+    static decimal_50_digits log_t(decimal_50_digits x, decimal_50_digits y);
+
     static decimal_50_digits atan_t(const decimal_50_digits& a);
 
     static decimal_50_digits root_t(const decimal_50_digits& a, const int& p);
