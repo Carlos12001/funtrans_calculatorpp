@@ -72,7 +72,7 @@ decimal_50_digits funtrans::power_t(const decimal_50_digits& x, const decimal_50
     return result;
 }
 
-int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
+int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
     if (1 <= x && x <= factorial_t(20))
         return 2;
     else if (x <= factorial_t(40))
