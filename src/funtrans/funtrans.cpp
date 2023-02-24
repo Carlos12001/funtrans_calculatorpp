@@ -85,6 +85,7 @@ int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
         return 15;
     else
         return 0;
+    return 0;
 }
 
 decimal_50_digits  funtrans::abs_t(const decimal_50_digits& a){
@@ -98,14 +99,14 @@ decimal_50_digits  funtrans::abs_t(const decimal_50_digits& a){
 
 decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
     decimal_50_digits S = 0;
-    decimal_50_digits x = (2 * (a - 1)) / (a + 1);
+    decimal_50_digits x = (2 * (a - 1)) * divi_t((a + 1));
     decimal_50_digits S_k;
     decimal_50_digits S_k_1;
 
     for (int n = 0; n <= iteration_max_t; n++) {
 
-        S_k = ( 1 / ((2 * n) + 1) ) * power_t(((a - 1)/(a + 1)),2 * n);
-        S_k_1 = ( 1 / ((2 * (n+1)) + 1) ) * power_t(((a - 1)/(a + 1)),2 * (n+1));
+        S_k = divi_t((2*n)+1) * power_t(((a-1)* divi_t(a+1)),2 * n);
+        S_k_1 = divi_t((2*(n+1))+1) * power_t(((a-1)* divi_t(a+1)),2 * (n+1));
 
         cout << std::fixed << "S_k: " << S_k.str() << endl;
         cout << std::fixed << "S_k_1: " << S_k_1.str() << endl;
@@ -113,7 +114,7 @@ decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
         cout << std::fixed << "n: " << n << endl;
 
         if (abs_t(( x * S_k_1)-( x * S_k)) < tol_t){
-            return S;
+            return S + (x * S_k);
         }
         else{
             S += (x * S_k);
@@ -171,6 +172,7 @@ decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
     else{
         cout << "Valor fuera del dominio de la función" << endl;
     }
+    return 0;
 }
 
 decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
@@ -231,6 +233,7 @@ decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
         cout << "P debe ser mayor a 2" << endl;
         return 0;
     }
+    return 0;
 }
 
 
