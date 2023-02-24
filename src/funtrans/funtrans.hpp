@@ -23,7 +23,7 @@ public:
 
     static decimal_50_digits atan_t(const decimal_50_digits& a);
 
-    static decimal_50_digits root_t(const decimal_50_digits& a, const int& p);
+    static decimal_50_digits root_t(const int& p, const decimal_50_digits& a);
 
     static decimal_50_digits abs_t(const decimal_50_digits& a);
 

@@ -185,8 +185,8 @@ decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
     decimal_50_digits S_k_1;
     if (a >= -1 && a <= 1) {
         for (int n = 0; n < iteration_max_t; n++) {
-            S_k = (factorial_t(2*n)/ (pow(4,n) * pow(factorial_t(n),2) * ((2*n)+1))) * power_t(a, (2*n)+1);
-            S_k_1 = (factorial_t(2*(n+1))/ (pow(4,(n+1)) * pow(factorial_t(n+1),2) * ((2*(n+1))+1))) * power_t(a, (2*(n+1))+1);
+            S_k = (factorial_t(2 * n) * divi_t(power_t(4,n) * power_t(factorial_t(n),2) * ((2 * n) + 1)) * power_t(a, (2 * n) + 1));
+            S_k_1 = (factorial_t(2 * (n+1)) * divi_t(power_t(4,n+1) * power_t(factorial_t(n+1),2) * ((2 * (n+1)) + 1)) * power_t(a, (2 * (n+1)) + 1));
             cout << "S_k: " << S_k.str() << endl;
             cout << "S_k_1: " << S_k_1.str() << endl;
             if(abs(S_k_1 - S_k) < tol_t){
@@ -206,17 +206,16 @@ decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
 
 }
 
-decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
-    decimal_50_digits X_k = a / 2;
+decimal_50_digits funtrans::root_t(const int& p, const decimal_50_digits& a){
+    decimal_50_digits X_k = a * divi_t(2);
     decimal_50_digits X_k_1;
-    decimal_50_digits X = a / 2;
+    decimal_50_digits X = a * divi_t(2);
     if ( p > 2){
         if (p % 2 == 0){
             if (a > 0){
-                for (int n = 0; n < iteration_max_t; n++) {
-                    X_k_1 = X_k - ((power_t(X_k,p) - a)/( p * (pow(X_k, p-1))));
-
-                    if (abs(X_k_1 - X_k) < (tol_t * (X_k_1))){
+                for (int n = 1; n < iteration_max_t; n++) {
+                    X_k_1 = X_k - ((power_t(X_k,p)-a) * divi_t(p * power_t(X_k, p-1)));
+                    if (abs_t(X_k_1 - X_k) < (tol_t * (X_k_1))){
                         return X;
                     }
                     X += X_k_1;
