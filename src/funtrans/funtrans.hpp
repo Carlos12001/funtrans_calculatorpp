@@ -17,6 +17,16 @@ public:
 
     static decimal_50_digits power_t(decimal_50_digits x, decimal_50_digits y);
 
+    static decimal_50_digits sin_t(decimal_50_digits x); //aun no se implementa
+
+    static decimal_50_digits tan_t(decimal_50_digits x); //aun no se implementa
+
+    static decimal_50_digits  cos_t(decimal_50_digits x); //aun no se implementa
+
+    static  decimal_50_digits  csc_t(decimal_50_digits x); //aun no se implementa
+
+
+
 private:
 
     static const decimal_50_digits tol_t;
