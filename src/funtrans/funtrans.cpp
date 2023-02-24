@@ -384,6 +384,15 @@ decimal_50_digits funtrans::tan_t(decimal_50_digits x) {
             return sin_t(x)*divi_t(cos_t(x));
         }
 }
+decimal_50_digits funtrans::csc_t(decimal_50_digits x) {
+    decimal_50_digits result = sin_t(x);
+    if(result !=0){
+        return 1 * divi_t(result);
+    }else{
+        return 404;
+    }
+
+}
 
 int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
     if (1 <= x && x <= factorial_t(20))
