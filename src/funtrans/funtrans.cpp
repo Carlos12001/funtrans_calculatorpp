@@ -84,3 +84,152 @@ int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
     else
         return 0;
 }
+
+decimal_50_digits  funtrans::abs_t(const decimal_50_digits& a){
+    if (a < 0){
+        return -1 * a;
+    }
+    else{
+        return a;
+    }
+}
+
+decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
+    decimal_50_digits S = 0;
+    decimal_50_digits x = (2 * (a - 1)) / (a + 1);
+    decimal_50_digits S_k;
+    decimal_50_digits S_k_1;
+
+    for (int n = 0; n <= iteration_max_t; n++) {
+
+        S_k = ( 1 / ((2 * n) + 1) ) * power_t(((a - 1)/(a + 1)),2 * n);
+        S_k_1 = ( 1 / ((2 * (n+1)) + 1) ) * power_t(((a - 1)/(a + 1)),2 * (n+1));
+
+        cout << std::fixed << "S_k: " << S_k.str() << endl;
+        cout << std::fixed << "S_k_1: " << S_k_1.str() << endl;
+        cout << std::fixed << "S: " << S.str() << endl;
+        cout << std::fixed << "n: " << n << endl;
+
+        if (abs_t(( x * S_k_1)-( x * S_k)) < tol_t){
+            return S;
+        }
+        else{
+            S += (x * S_k);
+        }
+    }
+    return S;
+}
+
+decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
+    if (a >= -1 && a <= 1){
+        decimal_50_digits S = 0;
+        decimal_50_digits S_k;
+        decimal_50_digits S_k_1;
+        for (int n = 0; n < iteration_max_t; n++) {
+            S_k = pow(-1,n) * ((pow(a,(2*n)+1))/(2*n)+1);
+            S_k_1 = pow(-1,(n+1)) * ((pow(a,(2*(n+1))+1))/(2*(n+1))+1);
+            if (abs(S_k_1 - S_k) < tol_t){
+                return S;
+            }
+            else{
+                S += S_k;
+            }
+        }
+    }
+    if (a > 1){
+        decimal_50_digits S = 0;
+        decimal_50_digits S_k;
+        decimal_50_digits S_k_1;
+        for (int n = 0; n < iteration_max_t; n++) {
+            S_k = power_t(-1,n) * (1/((2*n)+1)*(power_t(a,(2*n)+1)));
+            S_k_1 = power_t(-1,(n+1)) * (1/((2*(n+1))+1)*(power_t(a,(2*(n+1))+1)));
+            if (abs(S_k_1 - S_k) < tol_t){
+                return (pi_t/2) - S;
+            }
+            else{
+                S += S_k;
+            }
+        }
+    }
+    if (a < -1){
+        decimal_50_digits S = 0;
+        decimal_50_digits S_k;
+        decimal_50_digits S_k_1;
+        for (int n = 0; n < iteration_max_t; n++) {
+            S_k = pow(-1,n) * (1/((2*n)+1)*(pow(a,(2*n)+1)));
+            S_k_1 = pow(-1,(n+1)) * (1/((2*(n+1))+1)*(pow(a,(2*(n+1))+1)));
+            if (abs(S_k_1 - S_k) < tol_t){
+                return (-1 * (pi_t/2)) - S;
+            }
+            else{
+                S += S_k;
+            }
+        }
+    }
+    else{
+        cout << "Valor fuera del dominio de la función" << endl;
+    }
+}
+
+decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
+    decimal_50_digits S = 0;
+    decimal_50_digits S_k;
+    decimal_50_digits S_k_1;
+    if (a >= -1 && a <= 1) {
+        for (int n = 0; n < iteration_max_t; n++) {
+            S_k = (factorial_t(2*n)/ (pow(4,n) * pow(factorial_t(n),2) * ((2*n)+1))) * power_t(a, (2*n)+1);
+            S_k_1 = (factorial_t(2*(n+1))/ (pow(4,(n+1)) * pow(factorial_t(n+1),2) * ((2*(n+1))+1))) * power_t(a, (2*(n+1))+1);
+            cout << "S_k: " << S_k.str() << endl;
+            cout << "S_k_1: " << S_k_1.str() << endl;
+            if(abs(S_k_1 - S_k) < tol_t){
+                break;
+            }
+            else{
+                S += S_k;
+                cout << "S: " << S.str() << endl;
+            }
+        }
+        return S;
+    }
+    else{
+        cout << "Valor fuera del dominio de la funcion" << endl;
+        return 0;
+    }
+
+}
+
+decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
+    decimal_50_digits X_k = a / 2;
+    decimal_50_digits X_k_1;
+    decimal_50_digits X = a / 2;
+    if ( p > 2){
+        if (p % 2 == 0){
+            if (a > 0){
+                for (int n = 0; n < iteration_max_t; n++) {
+                    X_k_1 = X_k - ((power_t(X_k,p) - a)/( p * (pow(X_k, p-1))));
+
+                    if (abs(X_k_1 - X_k) < (tol_t * (X_k_1))){
+                        return X;
+                    }
+                    X += X_k_1;
+                    X_k = X_k_1;
+                }
+            }
+            else{
+                cout << "Si P es par, a debe ser positivo" << endl;
+                return 0;
+            }
+        }
+        else{
+            cout << "P debe ser par" << endl;
+            return 0;
+        }
+    }
+    else{
+        cout << "P debe ser mayor a 2" << endl;
+        return 0;
+    }
+}
+
+
+
