@@ -22,6 +22,7 @@ int main(int argc, char *argv[]) {
          funtrans::cosh_t(5).str();
 
     cout << std::fixed << funtrans::sin_t(40).str() << endl;
+    cout << std::fixed << funtrans::cos_t(1).str() << endl;
     return InitGUI::start(argc, argv);
     return 0;
 }

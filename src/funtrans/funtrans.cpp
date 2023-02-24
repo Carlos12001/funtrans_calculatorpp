@@ -324,6 +324,21 @@ decimal_50_digits funtrans::cot_t(const decimal_50_digits& a){
 }
 */
 
+int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
+    if (1 <= x && x <= factorial_t(20))
+        return 2;
+    else if (x <= factorial_t(40))
+        return 4;
+    else if (x <= factorial_t(60))
+        return 8;
+    else if (x <= factorial_t(80))
+        return 11;
+    else if (x <= factorial_t(100))
+        return 15;
+    else
+        return 0;
+}
+
 decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
     int n =0;
     decimal_50_digits sk =0;
@@ -331,6 +346,25 @@ decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
     decimal_50_digits error =1;
     for(int i =0; i < iteration_max_t; ++i) {
         sk_1 = sk + (power_t(-1, i) * (power_t(x, 2 * i + 1) * divi_t(factorial_t(2 * i + 1))));
+        error = sk_1 - sk;
+        if(abs(error) <tol_t){
+            cout << std::fixed << error << endl;
+            sk = sk_1;
+            break;
+        }
+        else{
+            sk = sk_1;
+        }
+    }
+    return sk;
+}
+
+decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
+    decimal_50_digits sk =0;
+    decimal_50_digits  sk_1 =0;
+    decimal_50_digits error =1;
+    for(int i=0; i < iteration_max_t; ++i){
+        sk_1 = sk+ (power_t(-1, i)*(power_t(x,2*i)* divi_t(factorial_t(2*i))));
         error = sk_1 - sk;
         if(abs(error) <tol_t){
             cout << std::fixed << error << endl;
