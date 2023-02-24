@@ -80,7 +80,6 @@ decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
         sk_1 = sk + (power_t(-1, i) * (power_t(x, 2 * i + 1) * divi_t(factorial_t(2 * i + 1))));
         error = sk_1 - sk;
          if(abs(error) <tol_t){
-             cout << std::fixed << error << endl;
             sk = sk_1;
             break;
         }
@@ -99,7 +98,6 @@ decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
         sk_1 = sk+ (power_t(-1, i)*(power_t(x,2*i)* divi_t(factorial_t(2*i))));
         error = sk_1 - sk;
         if(abs(error) <tol_t){
-            cout << std::fixed << error << endl;
             sk = sk_1;
             break;
         }
@@ -108,6 +106,15 @@ decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
         }
     }
     return sk;
+}
+
+decimal_50_digits funtrans::tan_t(decimal_50_digits x) {
+        if (cos_t(x) ==0){
+            return 404;
+        }
+        else{
+            return sin_t(x)*divi_t(cos_t(x));
+        }
 }
 
 int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
