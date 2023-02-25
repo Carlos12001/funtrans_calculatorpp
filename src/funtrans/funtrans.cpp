@@ -6,7 +6,7 @@
 
 const decimal_50_digits funtrans::pi_t = 3.1415926535897932384626433832795028841971693993751;
 
-const decimal_50_digits funtrans::tol_t = 0.00000001;
+const decimal_50_digits funtrans::tol_t = 0.00000000001;
 
 const int funtrans::iteration_max_t = 2500;
 
@@ -72,7 +72,7 @@ decimal_50_digits funtrans::power_t(const decimal_50_digits& x, const decimal_50
     return result;
 }
 
-int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
+int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
     if (1 <= x && x <= factorial_t(20))
         return 2;
     else if (x <= factorial_t(40))
@@ -85,7 +85,6 @@ int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
         return 15;
     else
         return 0;
-    return 0;
 }
 
 decimal_50_digits  funtrans::abs_t(const decimal_50_digits& a){
@@ -118,12 +117,10 @@ decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
     return S;
 }
 
-decimal_50_digits  funtrans::log_t(decimal_50_digits x,decimal_50_digits y){
+decimal_50_digits  funtrans::log_t(const decimal_50_digits& x,const decimal_50_digits& y){
     if ( x > 0 && y > 0){
-        cout << "LOG: " << endl;
         return ln_t(y) * divi_t(ln_t(x));
     }
-    cout << "Los valores de X y y deben ser mayores a 0" << endl;
     return 0;
 }
 

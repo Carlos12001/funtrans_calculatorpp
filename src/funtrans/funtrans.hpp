@@ -19,7 +19,7 @@ public:
 
     static decimal_50_digits ln_t(const decimal_50_digits& a);
 
-    static decimal_50_digits log_t(decimal_50_digits x, decimal_50_digits y);
+    static decimal_50_digits log_t(const decimal_50_digits& x, const decimal_50_digits& y);
 
     static decimal_50_digits atan_t(const decimal_50_digits& a);
 
@@ -35,7 +35,7 @@ private:
 
     static const int iteration_max_t;
 
-    static int exponent_eps_aux_divi_t(decimal_50_digits x);
+    static int exponent_eps_aux_divi_t(const decimal_50_digits& x);
 
 };
 
