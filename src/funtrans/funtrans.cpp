@@ -239,5 +239,17 @@ decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
     return 0;
 }
 
+decimal_50_digits funtrans::exp_t(const decimal_50_digits &x) {
+    // sk anterior
+    decimal_50_digits sk = 0;
+    // sk+1
+    decimal_50_digits sk_1 = 0;
+    for (int i = 0; i < iteration_max_t ; ++i) {
+        sk = sk_1;
+        sk_1 += power_t(x, i) * divi_t(factorial_t(i));
 
-
+        if (abs(sk_1-sk)<tol_t)
+            break;
+    }
+    return sk;
+}
