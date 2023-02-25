@@ -1,7 +1,10 @@
 # funtrans_calculatorpp
-Esta es una aplicación escrita en C++ que permite a los usuarios aproximar los valores numéricos de funciones trascendentales
-de una variable real. Lo logra usando solo las siguientes operaciones aritméticas: suma (+), resta (-),
-multiplicación (*), y potencia de un exponente entero positivo (**). La división (/) no está permitida.
+Esta es una aplicación escrita en C++ que permite a los usuarios aproximar 
+los valores numéricos de funciones trascendentales
+de una variable real. Lo logra usando solo las siguientes operaciones 
+aritméticas: suma (+), resta (-),
+multiplicación (*), y potencia de un exponente entero positivo (**). 
+La división (/) no está permitida.
 
 # Tutorial para correr el proyecto
 
