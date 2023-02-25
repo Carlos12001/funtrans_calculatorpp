@@ -89,12 +89,10 @@ int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
 }
 
 decimal_50_digits  funtrans::abs_t(const decimal_50_digits& a){
-    if (a < 0){
+    if (a < 0)
         return -1 * a;
-    }
-    else{
+    else
         return a;
-    }
 }
 
 decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
@@ -206,34 +204,23 @@ decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
 
 }
 
-decimal_50_digits funtrans::root_t(const int& p, const decimal_50_digits& a){
+decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
     decimal_50_digits X_k = a * divi_t(2);
-    decimal_50_digits X_k_1;
-    decimal_50_digits X = a * divi_t(2);
-    if ( p > 2){
-        if (p % 2 == 0){
-            if (a > 0){
-                for (int n = 1; n < iteration_max_t; n++) {
-                    X_k_1 = X_k - ((power_t(X_k,p)-a) * divi_t(p * power_t(X_k, p-1)));
-                    if (abs_t(X_k_1 - X_k) < (tol_t * (X_k_1))){
-                        return X;
-                    }
-                    X += X_k_1;
-                    X_k = X_k_1;
-                }
-            }
-            else{
-                cout << "Si P es par, a debe ser positivo" << endl;
-                return 0;
-            }
-        }
-        else{
-            cout << "P debe ser par" << endl;
-            return 0;
+    decimal_50_digits X_k_1;;
+    if ( p > 2 && p % 2 == 0 && a > 0){
+        for (int n = 1; n < iteration_max_t; n++) {
+            X_k_1 = X_k - ((power_t(X_k,p)-a) *
+                    divi_t(p * power_t(X_k, p-1)));
+
+            if (abs_t(X_k_1 - X_k) < (tol_t * (X_k_1)))
+                return X_k_1;
+
+            X_k = X_k_1;
         }
     }
     else{
         cout << "P debe ser mayor a 2" << endl;
+        //power_t(a, p);
         return 0;
     }
     return 0;
