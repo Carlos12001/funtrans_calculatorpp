@@ -3,11 +3,11 @@
 //
 #include "../header.hpp"
 #include "funtrans.hpp"
+#include <cmath>
 
-const decimal_50_digits funtrans::pi_t =
-        3.1415926535897932384626433832795028841971693993751;
+const decimal_50_digits funtrans::pi_t = 3.1415926535897932384626433832795028841971693993751;
 
-const decimal_50_digits funtrans::tol_t = 0.00000000001;
+const decimal_50_digits funtrans::tol_t = 0.00000001;
 
 const int funtrans::iteration_max_t = 2500;
 
@@ -21,7 +21,7 @@ decimal_50_digits funtrans::factorial_t(decimal_50_digits x) {
     return result;
 }
 
-decimal_50_digits funtrans::divi_t(const decimal_50_digits& x) {
+decimal_50_digits funtrans::divi_t(decimal_50_digits x) {
 
     // Check 1/0
     if(x==0)
@@ -48,11 +48,8 @@ decimal_50_digits funtrans::divi_t(const decimal_50_digits& x) {
 
 }
 
-decimal_50_digits funtrans::power_t(const decimal_50_digits& x,
-                                    const decimal_50_digits& y) {
+decimal_50_digits funtrans::power_t(decimal_50_digits x, decimal_50_digits y) {
     decimal_50_digits result = 1;
-
-    // e^x y In x y = -1/5
 
     // Check unnecessary iterations
     if(x==0 || x== 1)
@@ -74,7 +71,7 @@ decimal_50_digits funtrans::power_t(const decimal_50_digits& x,
     return result;
 }
 
-int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
+int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
     if (1 <= x && x <= factorial_t(20))
         return 2;
     else if (x <= factorial_t(40))
@@ -89,153 +86,63 @@ int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
         return 0;
 }
 
-decimal_50_digits  funtrans::abs_t(const decimal_50_digits& a){
-    if (a < 0)
-        return -1 * a;
-    else
-        return a;
+decimal_50_digits funtrans::absolute(const decimal_50_digits& num){
+    if (num < 0)
+        return num * -1;
+    return num;
 }
 
-decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
-    decimal_50_digits S = 0;
-    decimal_50_digits x = (2 * (a - 1)) * divi_t((a + 1));
-    decimal_50_digits S_k;
-    decimal_50_digits S_k_1;
+/* ---------------- */
+/* Function: sinh_t */
+/* ---------------- */
+decimal_50_digits funtrans::sinh_t(const decimal_50_digits& a){
+    decimal_50_digits s_k;
+    decimal_50_digits s_k_1;
 
-    for (int n = 0; n <= iteration_max_t; n++) {
+    for (int n = 0; n < iteration_max_t; n++){
+        s_k = s_k_1;
+        s_k_1 += power_t(a,2*n+1)  * divi_t(factorial_t(2*n+1));
 
-        S_k = divi_t((2*n)+1) * power_t(((a-1)* divi_t(a+1)),2 * n);
-        S_k_1 = divi_t((2*(n+1))+1) * power_t(((a-1)* divi_t(a+1)),2 * (n+1));
-
-        if (abs_t(( x * S_k_1)-( x * S_k)) < tol_t){
-            return S + (x * S_k);
-        }
-        else{
-            S += (x * S_k);
-        }
+        if (absolute(s_k_1 - s_k) < tol_t)
+            return s_k_1;
     }
-    return S;
+    return s_k_1;
 }
 
-decimal_50_digits  funtrans::log_t(const decimal_50_digits& x,const decimal_50_digits& y){
-    if ( x > 0 && y > 0){
-        return ln_t(y) * divi_t(ln_t(x));
+/* ---------------- */
+/* Function: cosh_t */
+/* ---------------- */
+decimal_50_digits funtrans::cosh_t(const decimal_50_digits& a){
+    decimal_50_digits s_k;
+    decimal_50_digits s_k_1;
+
+    for (int n = 0; n < iteration_max_t; n++){
+        s_k = s_k_1;
+        s_k_1 = s_k_1 + power_t(a, 2*n) * divi_t(factorial_t(2*n));
+
+        if (absolute(s_k_1 - s_k) < tol_t)
+            return s_k_1;
     }
-    return 0;
+    return s_k_1;
 }
 
-decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
-    if (a >= -1 && a <= 1){
-        decimal_50_digits S = 0;
-        decimal_50_digits S_k;
-        decimal_50_digits S_k_1;
-        for (int n = 0; n < iteration_max_t; n++) {
-            S_k = power_t(-1,n) * (power_t(a, (2*n) + 1)/((2*n) + 1));
-            S_k_1 = power_t(-1,n+1) * (power_t(a, (2*(n+1)) + 1)/((2*(n+1)) + 1));
-            if (abs(S_k_1 - S_k) < tol_t){
-                return S;
-            }
-            else{
-                S += S_k;
-            }
-        }
-    }
-    if (a > 1){
-        decimal_50_digits S = 0;
-        decimal_50_digits S_k;
-        decimal_50_digits S_k_1;
-        for (int n = 0; n < iteration_max_t; n++) {
-            S_k = power_t(-1, n) * divi_t(((2*n)+1) * power_t(a,(2*n)+1));
-            S_k_1 = power_t(-1, n+1) * divi_t(((2*(n+1))+1) * power_t(a,(2*(n+1))+1));
-            if (abs(S_k_1 - S_k) < tol_t){
-                return (pi_t * divi_t(2)) - S;
-            }
-            else{
-                S += S_k;
-            }
-        }
-    }
-    if (a < -1){
-        decimal_50_digits S = 0;
-        decimal_50_digits S_k;
-        decimal_50_digits S_k_1;
-        for (int n = 0; n < iteration_max_t; n++) {
-            S_k = pow(-1,n) * (1/((2*n)+1)*(pow(a,(2*n)+1)));
-            S_k_1 = pow(-1,(n+1)) * (1/((2*(n+1))+1)*(pow(a,(2*(n+1))+1)));
-            if (abs(S_k_1 - S_k) < tol_t){
-                return (-1 * (pi_t * divi_t(2))) - S;
-            }
-            else{
-                S += S_k;
-            }
-        }
-    }
-    else{
-        cout << "Valor fuera del dominio de la función" << endl;
-    }
-    return 0;
+/* ---------------- */
+/* Function: tanh_t */
+/* ---------------- */
+decimal_50_digits funtrans::tanh_t(const decimal_50_digits& a){
+    return sinh_t(a) * divi_t(cosh_t(a));
 }
 
-decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
-    decimal_50_digits S = 0;
-    decimal_50_digits S_k;
-    decimal_50_digits S_k_1;
-    if (a >= -1 && a <= 1) {
-        for (int n = 0; n < iteration_max_t; n++) {
-            S_k = (factorial_t(2 * n) * divi_t(power_t(4,n) * power_t(factorial_t(n),2) * ((2 * n) + 1)) * power_t(a, (2 * n) + 1));
-            S_k_1 = (factorial_t(2 * (n+1)) * divi_t(power_t(4,n+1) * power_t(factorial_t(n+1),2) * ((2 * (n+1)) + 1)) * power_t(a, (2 * (n+1)) + 1));
-            cout << "S_k: " << S_k.str() << endl;
-            cout << "S_k_1: " << S_k_1.str() << endl;
-            if(abs(S_k_1 - S_k) < tol_t){
-                break;
-            }
-            else{
-                S += S_k;
-                cout << "S: " << S.str() << endl;
-            }
-        }
-        return S;
-    }
-    else{
-        cout << "Valor fuera del dominio de la funcion" << endl;
-        return 0;
-    }
-
+/* sec_t */ // Depende de Moya
+/*
+decimal_50_digits funtrans::sec_t(const decimal_50_digits& a){
+    return divi_t(cos_t(a));
 }
+*/
 
-decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
-    decimal_50_digits X_k = a * divi_t(2);
-    decimal_50_digits X_k_1;;
-    if ( p > 2 && p % 2 == 0 && a > 0){
-        for (int n = 1; n < iteration_max_t; n++) {
-            X_k_1 = X_k - ((power_t(X_k,p)-a) *
-                    divi_t(p * power_t(X_k, p-1)));
-
-            if (abs_t(X_k_1 - X_k) < (tol_t * (X_k_1)))
-                return X_k_1;
-
-            X_k = X_k_1;
-        }
-    }
-    else{
-        cout << "P debe ser mayor a 2" << endl;
-        //power_t(a, p);
-        return 0;
-    }
-    return 0;
+/* cot_t */ // Depende de Moya
+/*
+decimal_50_digits funtrans::cot_t(const decimal_50_digits& a){
+    return divi_t(tan_t(a));
 }
-
-decimal_50_digits funtrans::exp_t(const decimal_50_digits &x) {
-    // sk anterior
-    decimal_50_digits sk = 0;
-    // sk+1
-    decimal_50_digits sk_1 = 0;
-    for (int i = 0; i < iteration_max_t ; ++i) {
-        sk = sk_1;
-        sk_1 += power_t(x, i) * divi_t(factorial_t(i));
-
-        if (abs(sk_1-sk)<tol_t)
-            break;
-    }
-    return sk;
-}
+*/

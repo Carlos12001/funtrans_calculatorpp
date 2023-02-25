@@ -23,7 +23,7 @@ find_package(Qt6 COMPONENTS
 file(GLOB_RECURSE SOURCE_FILES true "./*.cpp" "./*.hpp" "./*.ui" "./*.qrc")
 
 # Create Var PROJECT_SOURCES
-set(PROJECT_SOURCES ${SOURCE_FILES})
+set(PROJECT_SOURCES ${SOURCE_FILES} main.cpp)
 
 # Create the executable and add the files to the .exe
 add_executable(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCES})

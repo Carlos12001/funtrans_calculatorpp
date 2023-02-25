@@ -13,26 +13,21 @@ public:
 
     static decimal_50_digits factorial_t(decimal_50_digits x);
 
-    static decimal_50_digits divi_t(const decimal_50_digits& x);
+    static decimal_50_digits divi_t(decimal_50_digits x);
 
-    static decimal_50_digits power_t(const decimal_50_digits& x,
-                                     const decimal_50_digits& y);
+    static decimal_50_digits power_t(decimal_50_digits x, decimal_50_digits y);
 
-    static decimal_50_digits exp_t(const decimal_50_digits& x);
+    static decimal_50_digits absolute(const decimal_50_digits& num);
 
-    static decimal_50_digits ln_t(const decimal_50_digits& a);
+    static decimal_50_digits sinh_t(const decimal_50_digits& a);
 
-    static decimal_50_digits log_t(const decimal_50_digits& x,
-                                   const decimal_50_digits& y);
+    static decimal_50_digits cosh_t(const decimal_50_digits& a);
 
-    static decimal_50_digits atan_t(const decimal_50_digits& a);
+    static decimal_50_digits tanh_t(const decimal_50_digits& a);
 
-    static decimal_50_digits root_t(const decimal_50_digits& a,
-                                    const int& p);
+    static decimal_50_digits sec_t(const decimal_50_digits& a);
 
-    static decimal_50_digits abs_t(const decimal_50_digits& a);
-
-    static decimal_50_digits asin_t(const decimal_50_digits& a);
+    static decimal_50_digits cot_t(const decimal_50_digits& a);
 
 private:
 
@@ -40,7 +35,7 @@ private:
 
     static const int iteration_max_t;
 
-    static int exponent_eps_aux_divi_t(const decimal_50_digits& x);
+    static int exponent_eps_aux_divi_t(decimal_50_digits x);
 
 };
 
