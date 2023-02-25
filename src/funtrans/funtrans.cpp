@@ -4,6 +4,8 @@
 #include "../header.hpp"
 #include "funtrans.hpp"
 
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 const decimal_50_digits funtrans::pi_t =
         3.1415926535897932384626433832795028841971693993751;
 
@@ -39,7 +41,7 @@ decimal_50_digits funtrans::divi_t(const decimal_50_digits& x) {
 
     for (int i = 0; i < iteration_max_t; ++i) {
         x_k = previous_x_k*(2 - x*previous_x_k);
-        if (abs(x_k-previous_x_k) < tol_t*abs(x_k))
+        if (abs_t(x_k-previous_x_k) < tol_t*abs_t(x_k))
             break;
         else
             previous_x_k = x_k;
@@ -104,25 +106,32 @@ decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
 
     for (int n = 0; n <= iteration_max_t; n++) {
 
-        S_k = divi_t((2*n)+1) * power_t(((a-1)* divi_t(a+1)),2 * n);
-        S_k_1 = divi_t((2*(n+1))+1) * power_t(((a-1)* divi_t(a+1)),2 * (n+1));
+        S_k = divi_t((2*n)+1) *
+                power_t(((a-1)* divi_t(a+1)),2 * n);
 
-        if (abs_t(( x * S_k_1)-( x * S_k)) < tol_t){
+        S_k_1 = divi_t((2*(n+1))+1) *
+                power_t(((a-1)* divi_t(a+1)),2 * (n+1));
+
+        if (abs_t(( x * S_k_1)-( x * S_k)) < tol_t)
             return S + (x * S_k);
-        }
-        else{
+
+        else
             S += (x * S_k);
-        }
+
     }
     return S;
 }
 
-decimal_50_digits  funtrans::log_t(const decimal_50_digits& x,const decimal_50_digits& y){
-    if ( x > 0 && y > 0){
+#pragma clang diagnostic push
+#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
+decimal_50_digits  funtrans::log_t(const decimal_50_digits& x,
+                                   const decimal_50_digits& y){
+    if ( x > 0 && y > 0)
         return ln_t(y) * divi_t(ln_t(x));
-    }
+
     return 0;
 }
+#pragma clang diagnostic pop
 
 decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
     if (a >= -1 && a <= 1){
@@ -130,14 +139,17 @@ decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
         decimal_50_digits S_k;
         decimal_50_digits S_k_1;
         for (int n = 0; n < iteration_max_t; n++) {
-            S_k = power_t(-1,n) * (power_t(a, (2*n) + 1)/((2*n) + 1));
-            S_k_1 = power_t(-1,n+1) * (power_t(a, (2*(n+1)) + 1)/((2*(n+1)) + 1));
-            if (abs(S_k_1 - S_k) < tol_t){
+            S_k = power_t(-1,n) *
+                    (power_t(a, (2*n) + 1)/((2*n) + 1));
+
+            S_k_1 = power_t(-1,n+1) *
+                    (power_t(a, (2*(n+1)) + 1)/((2*(n+1)) + 1));
+            if (abs_t(S_k_1 - S_k) < tol_t)
                 return S;
-            }
-            else{
+
+            else
                 S += S_k;
-            }
+
         }
     }
     if (a > 1){
@@ -145,29 +157,37 @@ decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
         decimal_50_digits S_k;
         decimal_50_digits S_k_1;
         for (int n = 0; n < iteration_max_t; n++) {
-            S_k = power_t(-1, n) * divi_t(((2*n)+1) * power_t(a,(2*n)+1));
-            S_k_1 = power_t(-1, n+1) * divi_t(((2*(n+1))+1) * power_t(a,(2*(n+1))+1));
-            if (abs(S_k_1 - S_k) < tol_t){
+            S_k = power_t(-1, n) * divi_t(((2*n)+1) *
+                    power_t(a,(2*n)+1));
+
+            S_k_1 = power_t(-1, n+1) * divi_t(((2*(n+1))+1) *
+                    power_t(a,(2*(n+1))+1));
+            if (abs_t(S_k_1 - S_k) < tol_t)
                 return (pi_t * divi_t(2)) - S;
-            }
-            else{
+
+            else
                 S += S_k;
-            }
+
         }
     }
     if (a < -1){
         decimal_50_digits S = 0;
         decimal_50_digits S_k;
         decimal_50_digits S_k_1;
+
         for (int n = 0; n < iteration_max_t; n++) {
-            S_k = pow(-1,n) * (1/((2*n)+1)*(pow(a,(2*n)+1)));
-            S_k_1 = pow(-1,(n+1)) * (1/((2*(n+1))+1)*(pow(a,(2*(n+1))+1)));
-            if (abs(S_k_1 - S_k) < tol_t){
+            S_k = pow(-1,n) * (1/((2*n)+1)*
+                    (pow(a,(2*n)+1)));
+
+            S_k_1 = pow(-1,(n+1)) * (1/((2*(n+1))+1)*
+                    (pow(a,(2*(n+1))+1)));
+
+            if (abs_t(S_k_1 - S_k) < tol_t)
                 return (-1 * (pi_t * divi_t(2))) - S;
-            }
-            else{
+
+            else
                 S += S_k;
-            }
+
         }
     }
     else{
@@ -182,13 +202,20 @@ decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
     decimal_50_digits S_k_1;
     if (a >= -1 && a <= 1) {
         for (int n = 0; n < iteration_max_t; n++) {
-            S_k = (factorial_t(2 * n) * divi_t(power_t(4,n) * power_t(factorial_t(n),2) * ((2 * n) + 1)) * power_t(a, (2 * n) + 1));
-            S_k_1 = (factorial_t(2 * (n+1)) * divi_t(power_t(4,n+1) * power_t(factorial_t(n+1),2) * ((2 * (n+1)) + 1)) * power_t(a, (2 * (n+1)) + 1));
-            cout << "S_k: " << S_k.str() << endl;
-            cout << "S_k_1: " << S_k_1.str() << endl;
-            if(abs(S_k_1 - S_k) < tol_t){
+
+            S_k = (factorial_t(2 * n) *
+                    divi_t(power_t(4,n) *
+                    power_t(factorial_t(n),2) *
+                    ((2 * n) + 1)) * power_t(a, (2 * n) + 1));
+
+            S_k_1 = (factorial_t(2 * (n+1)) *
+                    divi_t(power_t(4,n+1) *
+                    power_t(factorial_t(n+1),2) *
+                    ((2 * (n+1)) + 1)) * power_t(a, (2 * (n+1)) + 1));
+
+            if(abs_t(S_k_1 - S_k) < tol_t)
                 break;
-            }
+
             else{
                 S += S_k;
                 cout << "S: " << S.str() << endl;
@@ -205,7 +232,7 @@ decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
 
 decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
     decimal_50_digits X_k = a * divi_t(2);
-    decimal_50_digits X_k_1;;
+    decimal_50_digits X_k_1;
     if ( p > 2 && p % 2 == 0 && a > 0){
         for (int n = 1; n < iteration_max_t; n++) {
             X_k_1 = X_k - ((power_t(X_k,p)-a) *
@@ -234,8 +261,10 @@ decimal_50_digits funtrans::exp_t(const decimal_50_digits &x) {
         sk = sk_1;
         sk_1 += power_t(x, i) * divi_t(factorial_t(i));
 
-        if (abs(sk_1-sk)<tol_t)
+        if (abs_t(sk_1-sk)<tol_t)
             break;
     }
     return sk;
 }
+
+#pragma clang diagnostic pop
