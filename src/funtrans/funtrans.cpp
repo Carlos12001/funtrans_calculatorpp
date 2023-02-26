@@ -4,10 +4,6 @@
 #include "../header.hpp"
 #include "funtrans.hpp"
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
-
-
 const decimal_50_digits funtrans::pi_t =
         3.1415926535897932384626433832795028841971693993751;
 
@@ -56,7 +52,6 @@ decimal_50_digits funtrans::power_t(const decimal_50_digits& x,
                                     const decimal_50_digits& y) {
     decimal_50_digits result = 1;
 
-    // e^x y In x y = -1/5
 
     // Check unnecessary iterations
     if(x==0 || x== 1)
@@ -68,15 +63,25 @@ decimal_50_digits funtrans::power_t(const decimal_50_digits& x,
 
 
     // Only works for integers and positives
-    for (int i = 0; i < iteration_max_t; ++i){
-        if(i >= y)
-            break;
-        result *= x;
+    if(is_positive_integer(y)){
+        for (int i = 0; i < iteration_max_t; ++i){
+            if(i >= y)
+                break;
+            result *= x;
+        }
     }
+    else
+        result = exp_t(y * ln_t(abs(x)));
 
 
     return result;
 }
+
+bool funtrans::is_positive_integer(const decimal_50_digits & x) {
+    int valor_entero = static_cast<int>(x);
+    return (x == valor_entero) && (valor_entero > 0);
+}
+
 
 int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
     if (1 <= x && x <= factorial_t(20))
@@ -93,7 +98,7 @@ int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
         return 0;
 }
 
-decimal_50_digits  funtrans::abs_t(const decimal_50_digits& a){
+decimal_50_digits funtrans::abs_t(const decimal_50_digits& a){
     if (a < 0)
         return -1 * a;
     else
@@ -124,8 +129,6 @@ decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
     return S;
 }
 
-#pragma clang diagnostic push
-#pragma ide diagnostic ignored "OCUnusedGlobalDeclarationInspection"
 decimal_50_digits  funtrans::log_t(const decimal_50_digits& x,
                                    const decimal_50_digits& y){
     if ( x > 0 && y > 0)
@@ -133,7 +136,6 @@ decimal_50_digits  funtrans::log_t(const decimal_50_digits& x,
 
     return 0;
 }
-#pragma clang diagnostic pop
 
 decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
     if (a >= -1 && a <= 1){
@@ -235,7 +237,7 @@ decimal_50_digits funtrans::asin_t(const decimal_50_digits& a){
 decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
     decimal_50_digits X_k = a * divi_t(2);
     decimal_50_digits X_k_1;
-    if ( p > 2 && p % 2 == 0 && a > 0){
+    if ( is_positive_integer(p) && p > 2 && p % 2 == 0 && a > 0){
         for (int n = 1; n < iteration_max_t; n++) {
             X_k_1 = X_k - ((power_t(X_k,p)-a) *
                     divi_t(p * power_t(X_k, p-1)));
@@ -246,11 +248,9 @@ decimal_50_digits funtrans::root_t(const decimal_50_digits& a, const int& p){
             X_k = X_k_1;
         }
     }
-    else{
-        cout << "P debe ser mayor a 2" << endl;
-        //power_t(a, p);
-        return 0;
-    }
+    else
+        return  power_t(a, p);
+
     return 0;
 }
 
@@ -268,5 +268,3 @@ decimal_50_digits funtrans::exp_t(const decimal_50_digits &x) {
     }
     return sk;
 }
-
-#pragma clang diagnostic pop
