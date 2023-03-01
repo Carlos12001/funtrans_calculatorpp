@@ -46,13 +46,13 @@ public:
 
     static decimal_50_digits cot_t(const decimal_50_digits& a);
 
-    static decimal_50_digits sin_t(decimal_50_digits x); //aun no se implementa
+    static decimal_50_digits sin_t(decimal_50_digits x); //Implementado pero con error
 
-    static decimal_50_digits tan_t(decimal_50_digits x); //aun no se implementa
+    static decimal_50_digits tan_t(decimal_50_digits x); //Implementado pero con error
 
-    static decimal_50_digits  cos_t(decimal_50_digits x); //aun no se implementa
+    static decimal_50_digits cos_t(decimal_50_digits x); //Implementado pero con error
 
-    static  decimal_50_digits  csc_t(decimal_50_digits x); //aun no se implementa
+    static decimal_50_digits csc_t(decimal_50_digits x); //Implementado pero con error
 
 
 
@@ -63,6 +63,9 @@ private:
     static const int iteration_max_t;
 
     static int exponent_eps_aux_divi_t(const decimal_50_digits& x);
+
+    static decimal_50_digits adjust_inter(decimal_50_digits x);
+
 
 };
 

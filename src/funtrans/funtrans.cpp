@@ -340,14 +340,15 @@ int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
 }
 
 decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
+    x = adjust_inter(x);
     int n =0;
     decimal_50_digits sk =0;
     decimal_50_digits  sk_1 =0;
     decimal_50_digits error =1;
-    for(int i =0; i < iteration_max_t; ++i) {
+    for(int i =0; i < iteration_max_t; i++) {
         sk_1 = sk + (power_t(-1, i) * (power_t(x, 2 * i + 1) * divi_t(factorial_t(2 * i + 1))));
-        error = sk_1 - sk;
-         if(abs_t(error) <tol_t){
+        error = abs_t(sk_1 - sk);
+         if(error < tol_t){
             sk = sk_1;
             break;
         }
@@ -359,10 +360,11 @@ decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
 }
 
 decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
-    decimal_50_digits sk =0;
+    x = adjust_inter(x);
+    decimal_50_digits sk =1;
     decimal_50_digits  sk_1 =0;
     decimal_50_digits error =1;
-    for(int i=0; i < iteration_max_t; ++i){
+    for(int i=1; i < iteration_max_t; ++i){
         sk_1 = sk+ (power_t(-1, i)*(power_t(x,2*i)* divi_t(factorial_t(2*i))));
         error = sk_1 - sk;
         if(abs(error) <tol_t){
@@ -407,4 +409,19 @@ int funtrans::exponent_eps_aux_divi_t(decimal_50_digits x) {
         return 15;
     else
         return 0;
+}
+
+decimal_50_digits funtrans::adjust_inter(decimal_50_digits x) {
+    while(x<0 || x>2*pi_t){
+        if(x<0){
+            x = x+(2*pi_t);
+        }else{
+            x = x-(2*pi_t);
+        }
+
+    }
+
+
+    return x;
+
 }
