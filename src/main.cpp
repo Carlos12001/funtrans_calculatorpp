@@ -14,6 +14,12 @@ int main(int argc, char *argv[]) {
 //    else
 //        cout << "No es positivo entero." << endl;
 //    cout << fixed << funtrans::power_t(funtrans::pi_t, 5.0 / 2.0).str() << endl;
-
-    return InitGUI::start(argc, argv);
+    cout << std::fixed <<
+         funtrans::tanh_t(5).str() << "\n"
+         <<
+         funtrans::sinh_t(5).str() << "\n"
+         <<
+         funtrans::cosh_t(5).str();
+//    return InitGUI::start(argc, argv);
+    return 0;
 }
