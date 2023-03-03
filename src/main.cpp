@@ -15,11 +15,11 @@ int main(int argc, char *argv[]) {
         cout << "No es positivo entero." << endl;
     cout << fixed << funtrans::power_t(funtrans::pi_t, 5.0 / 2.0).str() << endl;
     cout << std::fixed <<
-         funtrans::tanh_t(5).str() << "\n"
+         funtrans::tanh_t(5).str() << endl
          <<
-         funtrans::sinh_t(5).str() << "\n"
+         funtrans::sinh_t(5).str() << endl
          <<
-         funtrans::cosh_t(5).str();
+         funtrans::cosh_t(5).str() << endl;
 
     cout << std::fixed << funtrans::sin_t(40).str() << endl;
     cout << std::fixed << funtrans::cos_t(1).str() << endl;

@@ -48,7 +48,7 @@ public:
 
     static decimal_50_digits sin_t(decimal_50_digits x); //Implementado pero con error
 
-    static decimal_50_digits tan_t(decimal_50_digits x); //Implementado pero con error
+    static decimal_50_digits tan_t(const decimal_50_digits& x); //Implementado pero con error
 
     static decimal_50_digits cos_t(decimal_50_digits x); //Implementado pero con error
 

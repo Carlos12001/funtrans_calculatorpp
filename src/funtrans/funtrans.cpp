@@ -4,6 +4,8 @@
 #include "../header.hpp"
 #include "funtrans.hpp"
 
+#include <utility>
+
 const decimal_50_digits funtrans::pi_t =
         3.1415926535897932384626433832795028841971693993751;
 
@@ -310,13 +312,13 @@ decimal_50_digits funtrans::tanh_t(const decimal_50_digits& a){
     return sinh_t(a) * divi_t(cosh_t(a));
 }
 
-/* sec_t */ // Depende de Moya
+/* sec_t */
 decimal_50_digits funtrans::sec_t(const decimal_50_digits& a){
     return divi_t(cos_t(a));
 }
 
 
-/* cot_t */ // Depende de Moya
+/* cot_t */
 decimal_50_digits funtrans::cot_t(const decimal_50_digits& a){
     return divi_t(tan_t(a));
 }
@@ -358,7 +360,7 @@ decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
     return sk;
 }
 
-decimal_50_digits funtrans::tan_t(decimal_50_digits x) {
+decimal_50_digits funtrans::tan_t(const decimal_50_digits& x) {
     if (cos_t(x) == 0)
         return 404;
     else
@@ -367,7 +369,7 @@ decimal_50_digits funtrans::tan_t(decimal_50_digits x) {
 }
 
 decimal_50_digits funtrans::csc_t(decimal_50_digits x) {
-    decimal_50_digits result = sin_t(x);
+    decimal_50_digits result = sin_t(std::move(x));
     if (result != 0)
         return 1 * divi_t(result);
     else {
