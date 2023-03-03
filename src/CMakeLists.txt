@@ -22,6 +22,11 @@ find_package(Qt6 COMPONENTS
 # Select all files
 file(GLOB_RECURSE SOURCE_FILES true "./*.cpp" "./*.hpp" "./*.ui" "./*.qrc")
 
+# Copy PDF file
+configure_file(resources/user_manual.pdf
+        ${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/resources/user_manual.pdf
+        COPYONLY)
+
 # Create Var PROJECT_SOURCES
 set(PROJECT_SOURCES ${SOURCE_FILES})
 
@@ -29,7 +34,11 @@ set(PROJECT_SOURCES ${SOURCE_FILES})
 add_executable(${CMAKE_PROJECT_NAME} ${PROJECT_SOURCES})
 
 # Add the libraries to the .exe
-target_link_libraries(${CMAKE_PROJECT_NAME} Qt::Core Qt::Gui Qt::Widgets ${Boost_LIBRARIES})
+target_link_libraries(${CMAKE_PROJECT_NAME}
+        Qt::Core
+        Qt::Gui
+        Qt::Widgets
+        ${Boost_LIBRARIES})
 
 # Config to run Qt in Windows
 if (WIN32)
@@ -44,13 +53,14 @@ if (WIN32)
             set(QT_INSTALL_PATH "${QT_INSTALL_PATH}/..")
         endif ()
     endif ()
-    if (EXISTS "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll")
+    if (EXISTS
+        "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll")
         add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E make_directory
                 "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
         add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
                 COMMAND ${CMAKE_COMMAND} -E copy
-                "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll"
+            "${QT_INSTALL_PATH}/plugins/platforms/qwindows${DEBUG_SUFFIX}.dll"
                 "$<TARGET_FILE_DIR:${PROJECT_NAME}>/plugins/platforms/")
     endif ()
     foreach (QT_LIB Core Gui Widgets)

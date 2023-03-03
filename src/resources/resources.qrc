@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/fonts">
-        <file>fonts/MontserratAlternates-Bold.ttf</file>
-        <file>fonts/MontserratAlternates-Regular.ttf</file>
-    </qresource>
-</RCC>
