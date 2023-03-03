@@ -9,7 +9,7 @@
 using namespace std;
 
 #include <boost/multiprecision/cpp_dec_float.hpp>
-typedef boost::multiprecision::cpp_dec_float_100 decimal_50_digits;
+typedef boost::multiprecision::cpp_dec_float_50 decimal_50_digits;
 
 
 #endif //FUNTRANS_CALCULATORPP_HEADER_H
