@@ -34,6 +34,8 @@ public:
 
     static decimal_50_digits abs_t(const decimal_50_digits& a);
 
+    static decimal_50_digits sinh_t(const decimal_50_digits& a);
+
     static decimal_50_digits asin_t(const decimal_50_digits& a);
 
     static decimal_50_digits cosh_t(const decimal_50_digits& a);

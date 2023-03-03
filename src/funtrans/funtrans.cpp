@@ -99,12 +99,6 @@ int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
         return 0;
 }
 
-decimal_50_digits funtrans::absolute(const decimal_50_digits& num){
-    if (num < 0)
-        return num * -1;
-    return num;
-}
-
 decimal_50_digits funtrans::abs_t(const decimal_50_digits& a){
     if (a < 0)
         return -1 * a;
@@ -286,7 +280,7 @@ decimal_50_digits funtrans::sinh_t(const decimal_50_digits& a){
         s_k = s_k_1;
         s_k_1 += power_t(a,2*n+1)  * divi_t(factorial_t(2*n+1));
 
-        if (absolute(s_k_1 - s_k) < tol_t)
+        if (abs_t(s_k_1 - s_k) < tol_t)
             return s_k_1;
     }
     return s_k_1;
@@ -303,7 +297,7 @@ decimal_50_digits funtrans::cosh_t(const decimal_50_digits& a){
         s_k = s_k_1;
         s_k_1 = s_k_1 + power_t(a, 2*n) * divi_t(factorial_t(2*n));
 
-        if (absolute(s_k_1 - s_k) < tol_t)
+        if (abs_t(s_k_1 - s_k) < tol_t)
             return s_k_1;
     }
     return s_k_1;
