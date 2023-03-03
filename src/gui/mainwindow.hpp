@@ -11,6 +11,7 @@ class MainWindow : public QMainWindow{
     Q_OBJECT
 
 public:
+
     MainWindow(QWidget *parent = nullptr);
 
     ~MainWindow();
@@ -20,26 +21,44 @@ private:
 
 private slots:
 
+    void onButtonHelpClicked();
 
-    void on_button_help_clicked();
-//    void on_button_clear_clicked();
-//    void on_button_divi_clicked();
-//    void on_button_exp_clicked();
-//    void on_button_sin_clicked();
-//    void on_button_cos_clicked();
-//    void on_button_tan_clicked();
-//    void on_button_ln_clicked();
-//    void on_button_logy_clicked();
-//    void on_button_power_clicked();
-//    void on_button_sinh_clicked();
-//    void on_button_cosh_clicked();
-//    void on_button_sqrt_clicked();
-//    void on_button_tanh_clicked();
-//    void on_button_root_clicked();
-//    void on_button_asin_clicked();
-//    void on_button_atan_clicked();
-//    void on_button_csc_clicked();
-//    void on_button_sec_clicked();
-//    void on_button_cot_clicked();
+    void onButtonClearClicked();
+
+    void onButtonDiviClicked();
+
+    void onButtonExpClicked();
+
+    void onButtonSinClicked();
+
+    void onButtonCosClicked();
+
+    void onButtonTanClicked();
+
+    void onButtonLnClicked();
+
+    void onButtonLogyClicked();
+
+    void onButtonPowerClicked();
+
+    void onButtonSinhClicked();
+
+    void onButtonCoshClicked();
+
+    void onButtonSqrtClicked();
+
+    void onButtonTanhClicked();
+
+    void onButtonRootClicked();
+
+    void onButtonAsinClicked();
+
+    void onButtonAtanClicked();
+
+    void onButtonCscClicked();
+
+    void onButtonSecClicked();
+
+    void onButtonCotClicked();
 };
 #endif // MAINWINDOW_H
