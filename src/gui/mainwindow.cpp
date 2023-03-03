@@ -4,7 +4,7 @@
 #include <QTime>
 #include <Qtimer>
 #include <QDesktopServices>
-#include <QDir>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,6 +18,17 @@ MainWindow::~MainWindow(){
 }
 
 void MainWindow::on_button_help_clicked() {
-    cout << "Open Manual" << endl;
-    QDesktopServices::openUrl(QUrl::fromLocalFile(QCoreApplication::applicationDirPath() + "/resources/user_manual.pdf"));
+    QString manualFilePath = QCoreApplication::applicationDirPath() +
+                             "/resources/user_manual.pdf";
+    QUrl manualFileUrl = QUrl::fromLocalFile(manualFilePath);
+    if (!QDesktopServices::openUrl(manualFileUrl)) {
+        QMessageBox::warning(this,
+                             tr("Error"),
+                             tr("No se puede abrir el manual local."));
+    }
+    else{
+    QDesktopServices::openUrl(QUrl(
+"https://estudianteccr-my.sharepoint.com/:w:/g/personal/carlos_andres12001_estudiantec_cr/ERbrWpZKlxNPvpSA8ychQxIBlg1tXkwrePMdH7psgyrorg?e=FIttP1",
+            QUrl::TolerantMode));
+    }
 }
