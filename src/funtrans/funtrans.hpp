@@ -13,7 +13,7 @@ public:
 
     static decimal_50_digits factorial_t(decimal_50_digits x);
 
-    static decimal_50_digits divi_t(const decimal_50_digits& x);
+    static decimal_50_digits divi_t(const decimal_50_digits& x_1);
 
     static decimal_50_digits power_t(const decimal_50_digits& x,
                                      const decimal_50_digits& y);
@@ -29,22 +29,22 @@ public:
 
     static decimal_50_digits atan_t(const decimal_50_digits& a);
 
-    static decimal_50_digits root_t(const decimal_50_digits& a,
-                                    const int& p);
+    static decimal_50_digits root_t(const decimal_50_digits& x,
+                                    const int& y);
 
     static decimal_50_digits abs_t(const decimal_50_digits& a);
 
-    static decimal_50_digits sinh_t(const decimal_50_digits& a);
+    static decimal_50_digits sinh_t(const decimal_50_digits& x);
 
-    static decimal_50_digits asin_t(const decimal_50_digits& a);
+    static decimal_50_digits asin_t(const decimal_50_digits& x);
 
-    static decimal_50_digits cosh_t(const decimal_50_digits& a);
+    static decimal_50_digits cosh_t(const decimal_50_digits& x);
 
-    static decimal_50_digits tanh_t(const decimal_50_digits& a);
+    static decimal_50_digits tanh_t(const decimal_50_digits& x);
 
-    static decimal_50_digits sec_t(const decimal_50_digits& a);
+    static decimal_50_digits sec_t(const decimal_50_digits& x);
 
-    static decimal_50_digits cot_t(const decimal_50_digits& a);
+    static decimal_50_digits cot_t(const decimal_50_digits& x);
 
     static decimal_50_digits sin_t(decimal_50_digits x); //Implementado pero con error
 
