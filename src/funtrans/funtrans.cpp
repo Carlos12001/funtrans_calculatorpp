@@ -387,3 +387,7 @@ decimal_50_digits funtrans::adjust_inter(decimal_50_digits x) {
     }
     return x;
 }
+
+decimal_50_digits funtrans::sqrt(const decimal_50_digits &x) {
+    return root_t(abs_t(x), 2);
+}

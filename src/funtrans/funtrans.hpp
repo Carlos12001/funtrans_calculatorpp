@@ -32,6 +32,8 @@ public:
     static decimal_50_digits root_t(const decimal_50_digits& x,
                                     const int& y);
 
+    static decimal_50_digits sqrt(const decimal_50_digits& x);
+
     static decimal_50_digits abs_t(const decimal_50_digits& a);
 
     static decimal_50_digits sinh_t(const decimal_50_digits& x);
