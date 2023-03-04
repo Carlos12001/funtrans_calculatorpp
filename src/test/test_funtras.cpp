@@ -5,7 +5,7 @@
 #include "test_funtras.hpp"
 
 Test::Test(){
-//    all();
+    all();
     cout << "--------- Prueba --------" << endl << endl
          << fixed << test_funtras().str() << endl;
 }
