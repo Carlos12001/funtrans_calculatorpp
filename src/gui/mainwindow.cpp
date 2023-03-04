@@ -112,3 +112,7 @@ void MainWindow::onButtonSecClicked() {
 void MainWindow::onButtonCotClicked() {
 
 }
+
+void MainWindow::onButtonPIClicked() {
+
+}

@@ -60,5 +60,7 @@ private slots:
     void onButtonSecClicked();
 
     void onButtonCotClicked();
+
+    void onButtonPIClicked();
 };
 #endif // MAINWINDOW_H
