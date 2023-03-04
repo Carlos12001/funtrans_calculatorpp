@@ -135,7 +135,7 @@ color:#53c8db;</string>
     <item>
      <layout class="QGridLayout" name="gridInput">
       <item row="10" column="0">
-       <widget class="QPushButton" name="button_exp">
+       <widget class="QPushButton" name="buttonExp">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -158,7 +158,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="8" column="2">
-       <widget class="QPushButton" name="button_log_y">
+       <widget class="QPushButton" name="buttonLog_y">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -181,7 +181,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="10" column="2">
-       <widget class="QPushButton" name="button_factorial">
+       <widget class="QPushButton" name="buttonFactorial">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -204,7 +204,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="9" column="1">
-       <widget class="QPushButton" name="button_sqrt">
+       <widget class="QPushButton" name="buttonSqrt">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -227,7 +227,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="2" column="1">
-       <widget class="QPushButton" name="button_cos">
+       <widget class="QPushButton" name="buttonCos">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -250,7 +250,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="4" column="2">
-       <widget class="QPushButton" name="button_tanh">
+       <widget class="QPushButton" name="buttonTanh">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -273,7 +273,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="4" column="0">
-       <widget class="QPushButton" name="button_sinh">
+       <widget class="QPushButton" name="buttonSinh">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -296,7 +296,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="2" column="2">
-       <widget class="QPushButton" name="button_tan">
+       <widget class="QPushButton" name="buttonTan">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -319,7 +319,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QPushButton" name="button_sin">
+       <widget class="QPushButton" name="buttonSin">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -342,7 +342,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="8" column="1">
-       <widget class="QPushButton" name="button_log10">
+       <widget class="QPushButton" name="buttonLog10">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -365,7 +365,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QPushButton" name="button_asin">
+       <widget class="QPushButton" name="buttonAsin">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -388,7 +388,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="4" column="1">
-       <widget class="QPushButton" name="button_cosh">
+       <widget class="QPushButton" name="buttonCosh">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -442,7 +442,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="11" column="1">
-       <widget class="QPushButton" name="button_pi">
+       <widget class="QPushButton" name="buttonPI">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -465,7 +465,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="8" column="0">
-       <widget class="QPushButton" name="button_ln">
+       <widget class="QPushButton" name="buttonLn">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -488,7 +488,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="9" column="0">
-       <widget class="QPushButton" name="button_divi">
+       <widget class="QPushButton" name="buttonDivi">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -511,7 +511,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="1" column="2">
-       <widget class="QPushButton" name="button_atan">
+       <widget class="QPushButton" name="buttonAtan">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -557,7 +557,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="10" column="1">
-       <widget class="QPushButton" name="button_power">
+       <widget class="QPushButton" name="buttonPower">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -580,7 +580,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="9" column="2">
-       <widget class="QPushButton" name="button_root">
+       <widget class="QPushButton" name="buttonRoot">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -603,7 +603,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="3" column="1">
-       <widget class="QPushButton" name="button_csc">
+       <widget class="QPushButton" name="buttonCsc">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -626,7 +626,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="3" column="0">
-       <widget class="QPushButton" name="button_sec">
+       <widget class="QPushButton" name="buttonSec">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
@@ -649,7 +649,7 @@ QPushButton:hover {
        </widget>
       </item>
       <item row="3" column="2">
-       <widget class="QPushButton" name="button_cot">
+       <widget class="QPushButton" name="buttonCot">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;

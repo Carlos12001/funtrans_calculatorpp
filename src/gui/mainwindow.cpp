@@ -14,7 +14,10 @@ MainWindow::MainWindow(QWidget *parent)
             &QPushButton::clicked,
             this,
             &MainWindow::onButtonHelpClicked);
-
+    connect(ui->buttonClear,
+            &QPushButton::clicked,
+            this,
+            &MainWindow::onButtonClearClicked);
 }
 
 MainWindow::~MainWindow(){
