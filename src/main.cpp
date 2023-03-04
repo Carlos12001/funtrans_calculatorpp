@@ -9,7 +9,7 @@ int main(int argc, char *argv[]) {
     << "pi_t = " << funtrans::pi_t.str() << endl
     << "factorial_t(50) = " << funtrans::factorial_t(50).str() << endl
     << "divi_t(47) = " << funtrans::divi_t(47).str() << endl
-    << "exp_t(2) = " << funtrans::exp_t(8).str() << endl
+    << "exp_t(8) = " << funtrans::exp_t(8).str() << endl
     << endl << "----------------------------------------------------" << endl
     << "sin_t(47.0/230.0) = "<< funtrans::sin_t(47.0/230.0).str() << endl
     << "sin_t(0.0) = "<< funtrans::sin_t(0.0).str() << endl

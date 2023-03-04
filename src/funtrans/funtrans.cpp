@@ -9,7 +9,7 @@
 const decimal_50_digits funtrans::pi_t =
         3.1415926535897932384626433832795028841971693993751;
 
-const decimal_50_digits funtrans::tol_t = 0.000000001;
+const decimal_50_digits funtrans::tol_t = 0.0000000001;
 
 const int funtrans::iteration_max_t = 2500;
 
@@ -302,7 +302,7 @@ decimal_50_digits funtrans::cosh_t(const decimal_50_digits& x){
 decimal_50_digits funtrans::tanh_t(const decimal_50_digits& x){
     decimal_50_digits result = cosh_t(x);
     if (result != 0)
-        return sinh_t(x) * result;
+        return sinh_t(x) * divi_t(result);
     else
         return 0;
 }
