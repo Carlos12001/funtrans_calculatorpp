@@ -5,23 +5,94 @@
 #include <Qtimer>
 #include <QDesktopServices>
 #include <QMessageBox>
+#include <QRegularExpressionValidator>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow){
     ui->setupUi(this);
-    connect(ui->buttonHelp,
-            &QPushButton::clicked,
-            this,
-            &MainWindow::onButtonHelpClicked);
-    connect(ui->buttonClear,
-            &QPushButton::clicked,
-            this,
-            &MainWindow::onButtonClearClicked);
+    connect(ui->buttonHelp, &QPushButton::clicked,
+            this, &MainWindow::onButtonHelpClicked);
+
+    connect(ui->buttonClear, &QPushButton::clicked,
+            this, &MainWindow::onButtonClearClicked);
+
+    connect(ui->buttonDivi, &QPushButton::clicked,
+            this, &MainWindow::onButtonDiviClicked);
+
+    connect(ui->buttonExp, &QPushButton::clicked,
+            this, &MainWindow::onButtonExpClicked);
+
+    connect(ui->buttonSin, &QPushButton::clicked,
+            this, &MainWindow::onButtonSinClicked);
+
+    connect(ui->buttonCos, &QPushButton::clicked,
+            this, &MainWindow::onButtonCosClicked);
+
+    connect(ui->buttonTan, &QPushButton::clicked,
+            this, &MainWindow::onButtonTanClicked);
+
+    connect(ui->buttonLn, &QPushButton::clicked,
+            this, &MainWindow::onButtonLnClicked);
+
+    connect(ui->buttonLogy, &QPushButton::clicked,
+            this, &MainWindow::onButtonLogyClicked);
+
+    connect(ui->buttonPower, &QPushButton::clicked,
+            this, &MainWindow::onButtonPowerClicked);
+
+    connect(ui->buttonSinh, &QPushButton::clicked,
+            this, &MainWindow::onButtonSinhClicked);
+
+    connect(ui->buttonCosh, &QPushButton::clicked,
+            this, &MainWindow::onButtonCoshClicked);
+
+    connect(ui->buttonSqrt, &QPushButton::clicked,
+            this, &MainWindow::onButtonSqrtClicked);
+
+    connect(ui->buttonTanh, &QPushButton::clicked,
+            this, &MainWindow::onButtonTanhClicked);
+
+    connect(ui->buttonRoot, &QPushButton::clicked,
+            this, &MainWindow::onButtonRootClicked);
+
+    connect(ui->buttonAsin, &QPushButton::clicked,
+            this, &MainWindow::onButtonAsinClicked);
+
+    connect(ui->buttonAtan, &QPushButton::clicked,
+            this, &MainWindow::onButtonAtanClicked);
+
+    connect(ui->buttonCsc, &QPushButton::clicked,
+            this, &MainWindow::onButtonCscClicked);
+
+    connect(ui->buttonSec, &QPushButton::clicked,
+            this, &MainWindow::onButtonSecClicked);
+
+    connect(ui->buttonCot, &QPushButton::clicked,
+            this, &MainWindow::onButtonCotClicked);
+
+    connect(ui->buttonPI, &QPushButton::clicked,
+            this, &MainWindow::onButtonPIClicked);
+
+    QRegularExpressionValidator *validator =
+    new QRegularExpressionValidator(QRegularExpression(
+                        "^[0-9]{0,50}(\\.[0-9]{0,50})?$"), this);
+    ui->lineEditX->setValidator(validator);
+    ui->lineEditY->setValidator(validator);
+
 }
 
 MainWindow::~MainWindow(){
     delete ui;
+}
+
+void MainWindow::showErrorDialog(){
+    QMessageBox errorMessage;
+    errorMessage.setIcon(QMessageBox::Critical);
+    errorMessage.setWindowTitle("Error");
+    errorMessage.setText("El valor ingresado está fuera del dominio.");
+    errorMessage.setStandardButtons(QMessageBox::Ok);
+    errorMessage.exec();
 }
 
 void MainWindow::onButtonHelpClicked() {
@@ -41,7 +112,9 @@ void MainWindow::onButtonHelpClicked() {
 }
 
 void MainWindow::onButtonClearClicked() {
-
+    ui->lineEditX->clear();
+    ui->lineEditY->clear();
+    ui->lineEditResult->clear();
 }
 
 void MainWindow::onButtonDiviClicked() {

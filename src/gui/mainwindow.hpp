@@ -17,6 +17,9 @@ public:
     ~MainWindow();
 
 private:
+
+    void showErrorDialog();
+
     Ui::MainWindow *ui;
 
 private slots:
@@ -62,5 +65,6 @@ private slots:
     void onButtonCotClicked();
 
     void onButtonPIClicked();
+
 };
 #endif // MAINWINDOW_H
