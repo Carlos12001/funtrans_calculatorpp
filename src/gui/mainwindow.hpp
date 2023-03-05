@@ -64,6 +64,8 @@ private slots:
 
     void onButtonCotClicked();
 
+    void onButtonFactorialClicked();
+
     void onButtonPIClicked();
 
 };

@@ -51,17 +51,17 @@ void Test::all() {
     funtrans::power_t(funtrans::pi_t, 5.0  *
     funtrans::divi_t( 2.0)).str() << endl
     << endl << "----------------------------------------------------" << endl
-    << "sinh_t(5) = " << funtrans::sinh_t(5).str() << endl
-    << "sinh_t(14.0 * funtrans::divi_t(3.0) = " << funtrans::sinh_t(14.0 *
+            << "sinh_t(5) = " << funtrans::sinh_t(5).str() << endl
+            << "sinh_t(14.0 * funtrans::divi_t(3.0) = " << funtrans::sinh_t(14.0 *
     funtrans::divi_t(3.0)).str() << endl
-    << "cosh_t(5) = "<< funtrans::cosh_t(5).str() << endl
-    << "cosh_t(14.0 * funtrans::divi_t(3.0) = "<< funtrans::cosh_t(14.0 *
+            << "cosh_t(5) = " << funtrans::cosh_t(5).str() << endl
+            << "cosh_t(14.0 * funtrans::divi_t(3.0) = " << funtrans::cosh_t(14.0 *
     funtrans::divi_t(3.0)).str() << endl
-    << "tanh_t(5) = " << funtrans::tanh_t(5).str() << endl
-    << "tanh_t(14.0 * funtrans::divi_t(3.0) = " << funtrans::tanh_t(14.0 *
+            << "tanh_t(5) = " << funtrans::tanh_t(5).str() << endl
+            << "tanh_t(14.0 * funtrans::divi_t(3.0) = " << funtrans::tanh_t(14.0 *
     funtrans::divi_t(3.0)).str() << endl
-    << endl << "----------------------------------------------------" << endl
-    << "sqrt_t(47) = " << funtrans::sqrt(47).str() << endl
+            << endl << "----------------------------------------------------" << endl
+            << "sqrt_t(47) = " << funtrans::sqrt_t(47).str() << endl
     << "root_t(64, 6) = " << funtrans::root_t(64, 6).str() << endl
     << "root_t(34, 9) = " << funtrans::root_t(34, 9).str() << endl
     << endl << "----------------------------------------------------" << endl
@@ -77,14 +77,14 @@ void Test::all() {
 }
 
 decimal_50_digits Test::test_funtras() {
-    //(root(cos(3/7)+ln(2), 3))/sinh(sqrt(2)) + arctan(e^-1)
+    //(root(cos(3/7)+ln(2), 3))/sinh(sqrt_t(2)) + arctan(e^-1)
     decimal_50_digits result =
     funtrans::root_t(
             funtrans::cos_t((3 * funtrans::divi_t(7))) +
             funtrans::ln_t(2)
     , 3)
     *
-    funtrans::divi_t(funtrans::sinh_t(funtrans::sqrt(2)))
+    funtrans::divi_t(funtrans::sinh_t(funtrans::sqrt_t(2)))
     +
     funtrans::atan_t(funtrans::divi_t(funtrans::exp_t(1)));
     return result;
