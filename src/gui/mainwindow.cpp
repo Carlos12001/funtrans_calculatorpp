@@ -1,5 +1,6 @@
 #include "mainwindow.hpp"
 #include "../header.hpp"
+#include "../funtrans/funtrans.hpp"
 #include "./ui_mainwindow.h"
 #include <QTime>
 #include <Qtimer>
@@ -86,14 +87,16 @@ MainWindow::~MainWindow(){
     delete ui;
 }
 
-void MainWindow::showErrorDialog(){
+void MainWindow::showErrorDialog(const QString& message) {
     QMessageBox errorMessage;
     errorMessage.setIcon(QMessageBox::Critical);
     errorMessage.setWindowTitle("Error");
     errorMessage.setText("El valor ingresado está fuera del dominio.");
+    errorMessage.setDetailedText(message);
     errorMessage.setStandardButtons(QMessageBox::Ok);
     errorMessage.exec();
 }
+
 
 void MainWindow::onButtonHelpClicked() {
     QString manualFilePath = QCoreApplication::applicationDirPath() +
@@ -114,12 +117,26 @@ void MainWindow::onButtonHelpClicked() {
 void MainWindow::onButtonClearClicked() {
     ui->lineEditX->clear();
     ui->lineEditY->clear();
-    ui->lineEditResult->clear();
+    ui->plaintTextEqual->clear();
 }
 
 void MainWindow::onButtonDiviClicked() {
+    string x_str = ui->lineEditX->text().toStdString();
+    decimal_50_digits x(x_str);
+    ui->lineEditY->clear();
+    ui->plaintTextEqual->clear();
 
+    if (x == 0) {
+        showErrorDialog("Valor de x no permitido "
+                        "(debe ser distinto de cero)");
+        return;
+    }
+
+    decimal_50_digits result = funtrans::divi_t(x);
+
+    ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 }
+
 
 void MainWindow::onButtonExpClicked() {
 

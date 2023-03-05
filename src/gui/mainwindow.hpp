@@ -18,7 +18,7 @@ public:
 
 private:
 
-    void showErrorDialog();
+    void showErrorDialog(const QString& message);
 
     Ui::MainWindow *ui;
 
