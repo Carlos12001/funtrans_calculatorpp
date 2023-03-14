@@ -134,11 +134,8 @@ void MainWindow::onButtonHelpClicked() {
 
 void MainWindow::onButtonClearClicked() {
     ui->lineEditX->clear();
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
     setGreenButtonStyle(ui->buttonXSign);
-    setGreenButtonStyle(ui->buttonYSign);
-    setGreenButtonStyle(ui->buttonEqualSign);
+    resetYAndEqual();
 }
 
 void MainWindow::onButtonDiviClicked() {
@@ -148,8 +145,7 @@ void MainWindow::onButtonDiviClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     if (x == 0) {
         showErrorDialog("Valor de x no permitido "
@@ -169,8 +165,7 @@ void MainWindow::onButtonExpClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     if (x < -1100) {
         showErrorDialog("Valor de x no permitido "
@@ -191,8 +186,7 @@ void MainWindow::onButtonSinClicked() {
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
     decimal_50_digits pi = funtrans::pi_t;
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     if (x > pi / 2 || x < -pi / 2) {
         showErrorDialog("Valor de x no permitido "
@@ -214,8 +208,7 @@ void MainWindow::onButtonCosClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     decimal_50_digits pi = funtrans::pi_t;
     decimal_50_digits two_pi = pi * decimal_50_digits(2);
@@ -239,8 +232,7 @@ void MainWindow::onButtonTanClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     decimal_50_digits pi = funtrans::pi_t;
 
@@ -263,8 +255,7 @@ void MainWindow::onButtonLnClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     if (x <= 0) {
         showErrorDialog("Valor de x no permitido "
@@ -290,7 +281,7 @@ void MainWindow::onButtonLogyClicked() {
     decimal_50_digits x(x_str);
     string y_str = ui->lineEditY->text().toStdString();
     decimal_50_digits y(y_str);
-    ui->plaintTextEqual->clear();
+    resetEqual();
 
     if (x <= 0 || y <= 0) {
         showErrorDialog("Valores de x e y no permitidos "
@@ -316,7 +307,7 @@ void MainWindow::onButtonPowerClicked() {
     decimal_50_digits x(x_str);
     string y_str = ui->lineEditY->text().toStdString();
     decimal_50_digits y(y_str);
-    ui->plaintTextEqual->clear();
+    resetEqual();
 
     decimal_50_digits result = funtrans::power_t(x, y);
 
@@ -330,7 +321,7 @@ void MainWindow::onButtonSinhClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     decimal_50_digits result = funtrans::sinh_t(x);
 
@@ -344,7 +335,7 @@ void MainWindow::onButtonCoshClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     decimal_50_digits result = funtrans::cosh_t(x);
 
@@ -358,8 +349,7 @@ void MainWindow::onButtonSqrtClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     if (x < 0) {
         showErrorDialog("Valor de x no permitido "
@@ -379,8 +369,7 @@ void MainWindow::onButtonTanhClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     decimal_50_digits result = funtrans::tanh_t(x);
 
@@ -400,7 +389,7 @@ void MainWindow::onButtonRootClicked() {
     decimal_50_digits x(x_str);
     string y_str = ui->lineEditY->text().toStdString();
     decimal_50_digits y(y_str);
-    ui->plaintTextEqual->clear();
+    resetEqual();
 
     if (!funtrans::is_positive_integer(y)) {
         showErrorDialog("Valor de y no permitido "
@@ -422,12 +411,15 @@ void MainWindow::onButtonAsinClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     if (x < -1 || x > 1) {
         showErrorDialog("Valor de x no permitido");
         return;
+    }
+
+    if(ui->buttonEqualSign->text().toStdString()!="+"){
+        setRedButtonStyle(ui->buttonEqualSign);
     }
 
     decimal_50_digits result = funtrans::asin_t(x);
@@ -447,6 +439,11 @@ void MainWindow::onButtonAtanClicked() {
 
     decimal_50_digits result = funtrans::atan_t(x);
 
+
+    if(ui->buttonEqualSign->text().toStdString()!="+")
+        setRedButtonStyle(ui->buttonEqualSign);
+
+
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 }
 
@@ -457,8 +454,7 @@ void MainWindow::onButtonCscClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     decimal_50_digits pi = funtrans::pi_t;
 
@@ -479,8 +475,7 @@ void MainWindow::onButtonSecClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     decimal_50_digits pi = funtrans::pi_t;
 
@@ -501,8 +496,7 @@ void MainWindow::onButtonCotClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
 
     decimal_50_digits pi = funtrans::pi_t;
 
@@ -524,8 +518,8 @@ void MainWindow::onButtonFactorialClicked() {
     }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    ui->lineEditY->clear();
-    ui->plaintTextEqual->clear();
+    resetYAndEqual();
+
     if (x<0&&!funtrans::is_positive_integer(x)) {
         showErrorDialog("Valor de x no permitido");
         return;
@@ -558,7 +552,33 @@ void MainWindow::onButtonPIClicked() {
 }
 
 void MainWindow::onButtonAcosClicked() {
+    if (ui->lineEditX->text().isEmpty()) {
+        showErrorDialog("Valor de x está vació.");
+        return;
+    }
+    string x_str = ui->lineEditX->text().toStdString();
+    decimal_50_digits x(x_str);
+    resetYAndEqual();
 
+
+    if (x < -1 || x > 1) {
+        showErrorDialog("Valor de x no permitido");
+        return;
+    }
+
+    decimal_50_digits result = 0;
+
+    if(ui->buttonEqualSign->text().toStdString()!="+")
+        result = funtrans::abs_t(funtrans::pi_t +
+                                                   funtrans::asin_t(x));
+
+    else
+        result = funtrans::abs_t(funtrans::pi_t -
+                                                   funtrans::asin_t(x));
+
+
+
+    ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 }
 
 void MainWindow::onButtonLog10Clicked() {
@@ -619,4 +639,17 @@ void MainWindow::setRedButtonStyle(QPushButton* button){
             "   background-color: #de505c;"
             "}"
     );
+}
+
+void MainWindow::resetYAndEqual() {
+    ui->lineEditY->clear();
+    setGreenButtonStyle(ui->buttonYSign);
+    ui->plaintTextEqual->clear();
+    setGreenButtonStyle(ui->buttonEqualSign);
+
+}
+
+void MainWindow::resetEqual() {
+    ui->plaintTextEqual->clear();
+    setGreenButtonStyle(ui->buttonEqualSign);
 }

@@ -25,6 +25,10 @@ private:
 
     void setRedButtonStyle(QPushButton* button);
 
+    void resetYAndEqual();
+
+    void resetEqual();
+
     Ui::MainWindow *ui;
 
 private slots:
