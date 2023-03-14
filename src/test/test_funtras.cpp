@@ -5,7 +5,7 @@
 #include "test_funtras.hpp"
 
 Test::Test(){
-    all();
+//    all();
     cout << "--------- Prueba --------" << endl << endl
          << fixed << test_funtras().str() << endl;
 }
@@ -78,6 +78,7 @@ void Test::all() {
 
 decimal_50_digits Test::test_funtras() {
     //(root(cos(3/7)+ln(2), 3))/sinh(sqrt_t(2)) + arctan(e^-1)
+    cout << "(root(cos(3/7)+ln(2), 3))/sinh(sqrt_t(2)) + arctan(e^-1) = \n";
     decimal_50_digits result =
     funtrans::root_t(
             funtrans::cos_t((3 * funtrans::divi_t(7))) +

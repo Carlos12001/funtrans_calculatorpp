@@ -3,7 +3,7 @@
 #include "test/test_funtras.hpp"
 
 int main(int argc, char *argv[]) {
-//    Test();
+    Test();
     return InitGUI::start(argc, argv);
     return 0;
 }
