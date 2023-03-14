@@ -266,10 +266,14 @@ void MainWindow::onButtonLnClicked() {
         return;
     }
 
+    if (x < 1) {
+        setRedButtonStyle(ui->buttonEqualSign);
+    }
+
     decimal_50_digits result = funtrans::ln_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-} //falta salida negativa
+}
 
 void MainWindow::onButtonLog10Clicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -298,10 +302,14 @@ void MainWindow::onButtonLog10Clicked() {
         return;
     }
 
+    if (x < 1) {
+        setRedButtonStyle(ui->buttonEqualSign);
+    }
+
     decimal_50_digits result = funtrans::log_t(10, x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-} //falta salida negativa
+}
 
 void MainWindow::onButtonLogyClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -336,10 +344,14 @@ void MainWindow::onButtonLogyClicked() {
         return;
     }
 
+    if (x < 1) {
+        setRedButtonStyle(ui->buttonEqualSign);
+    }
+
     decimal_50_digits result = funtrans::log_t(y, x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-} //falta salida negativa
+}
 
 void MainWindow::onButtonPowerClicked() {
     if (ui->lineEditX->text().isEmpty()) {
