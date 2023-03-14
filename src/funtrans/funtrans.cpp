@@ -131,10 +131,10 @@ decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
     return abs_t(S);
 }
 
-decimal_50_digits  funtrans::log_t(const decimal_50_digits& x,
-                                   const decimal_50_digits& y){
-    if ( x > 0 && y > 0)
-        return ln_t(y) * divi_t(ln_t(x));
+decimal_50_digits  funtrans::log_t(const decimal_50_digits& a,
+                                   const decimal_50_digits& x){
+    if (a > 0 && x > 0)
+        return ln_t(x) * divi_t(ln_t(a));
 
     return 0;
 }
