@@ -361,7 +361,25 @@ void MainWindow::onButtonPowerClicked() {
     decimal_50_digits y(y_str);
     resetEqual();
 
-    decimal_50_digits result = funtrans::power_t(x, y);
+    decimal_50_digits result = 0;
+
+    if(funtrans::is_positive_integer(y)){
+        result = funtrans::power_t(x, y);
+        if(ui->buttonXSign->text().toStdString()!="+" && static_cast<int>(y)%2!=0)
+            setRedButtonStyle(ui->buttonEqualSign);
+
+    }
+    else   if(x==0 || ui->buttonXSign->text().toStdString()!="+"){
+        showErrorDialog("Valor de x no permitido"
+                         " (para un y real "
+                         " x no puede ser negativo o 0.)");
+        return;
+    }else {
+        if(ui->buttonYSign->text().toStdString()!="+")
+            result = funtrans::divi_t(funtrans::power_t(x, y));
+        else
+            result = funtrans::power_t(x, y);
+    }
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 } //falta salida negativa
