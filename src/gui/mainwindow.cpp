@@ -382,7 +382,7 @@ void MainWindow::onButtonPowerClicked() {
     }
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-} //falta salida negativa
+}
 
 void MainWindow::onButtonSinhClicked() {
     if (ui->lineEditX->text().isEmpty()) {
