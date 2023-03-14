@@ -20,35 +20,522 @@ color:white;
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="12" column="2">
+     <widget class="QPushButton" name="buttonLog10">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>log10(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="2">
+     <widget class="QPushButton" name="buttonTanh">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>tanh(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QPushButton" name="buttonAcos">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>acos(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="2">
+     <widget class="QPushButton" name="buttonDivi">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>1/x</string>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="0">
+     <widget class="QPushButton" name="buttonSqrt">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>sqrt_t(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="2">
+     <widget class="QPushButton" name="buttonCot">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>cot(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QPushButton" name="buttonSin">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>sin(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="0">
+     <widget class="QPushButton" name="buttonExp">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>e^x</string>
+      </property>
+     </widget>
+    </item>
+    <item row="14" column="1">
+     <widget class="QPushButton" name="buttonPower">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>x^y</string>
+      </property>
+     </widget>
+    </item>
+    <item row="15" column="2">
+     <widget class="QPushButton" name="buttonPI">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #53c8db;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}</string>
+      </property>
+      <property name="text">
+       <string>PI</string>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="1">
+     <widget class="QPushButton" name="buttonLogy">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>log_y(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="QPushButton" name="buttonAsin">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>asin(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="2">
+     <widget class="QPushButton" name="buttonTan">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>tan(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QPushButton" name="buttonCos">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>cos(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QPushButton" name="buttonHelp">
+      <property name="font">
+       <font>
+        <family>Montserrat Alternates</family>
+        <pointsize>-1</pointsize>
+        <italic>false</italic>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #53c8db;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>HELP</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QPushButton" name="buttonCosh">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>cosh(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="2">
+     <widget class="QPushButton" name="buttonAtan">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>atan(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="2">
+     <widget class="QPushButton" name="buttonFactorial">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>x!</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QPushButton" name="buttonSinh">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>sinh(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="12" column="0">
+     <widget class="QPushButton" name="buttonLn">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>ln(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="1">
+     <widget class="QPushButton" name="buttonRoot">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>root(x, y)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QPushButton" name="buttonSec">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #232938;
+}
+
+QPushButton:hover {
+  background-color: #2E8B57;
+}
+</string>
+      </property>
+      <property name="text">
+       <string>sec(x)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="0" colspan="3">
      <layout class="QGridLayout" name="gridButton">
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="lineEditX">
-        <property name="text">
-         <string/>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-        </property>
-        <property name="placeholderText">
-         <string>0.0</string>
-        </property>
-        <property name="clearButtonEnabled">
-         <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="labelX">
-        <property name="styleSheet">
-         <string notr="true">font: 18pt &quot;Montserrat Alternates&quot;;</string>
-        </property>
-        <property name="text">
-         <string>x =</string>
-        </property>
-       </widget>
-      </item>
       <item row="2" column="0">
        <widget class="QLabel" name="labelEqual">
         <property name="styleSheet">
@@ -60,7 +547,7 @@ color:#53c8db;</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="1">
+      <item row="2" column="2">
        <widget class="QPlainTextEdit" name="plaintTextEqual">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
@@ -93,7 +580,33 @@ color:#53c8db;</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="1">
+      <item row="0" column="2">
+       <widget class="QLineEdit" name="lineEditX">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+        <property name="placeholderText">
+         <string>0.0</string>
+        </property>
+        <property name="clearButtonEnabled">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelX">
+        <property name="styleSheet">
+         <string notr="true">font: 18pt &quot;Montserrat Alternates&quot;;</string>
+        </property>
+        <property name="text">
+         <string>x =</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="2">
        <widget class="QLineEdit" name="lineEditY">
         <property name="font">
          <font>
@@ -130,275 +643,75 @@ color:#53c8db;</string>
         </property>
        </widget>
       </item>
+      <item row="2" column="1">
+       <widget class="QPushButton" name="buttonEqualSign">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #2E8B57;
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QPushButton" name="buttonYSign">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #2E8B57;
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPushButton" name="buttonXSign">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #2E8B57;
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </widget>
+      </item>
      </layout>
     </item>
-    <item>
-     <layout class="QGridLayout" name="gridInput">
-      <item row="10" column="0">
-       <widget class="QPushButton" name="buttonExp">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>e^x</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QPushButton" name="buttonCos">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>cos(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="2">
-       <widget class="QPushButton" name="buttonTanh">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>tanh(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0">
-       <widget class="QPushButton" name="buttonSinh">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>sinh(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="buttonTan">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>tan(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QPushButton" name="buttonSin">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>sin(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="0">
-       <widget class="QPushButton" name="buttonAsin">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>asin(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QPushButton" name="buttonCosh">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>cosh(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="0">
-       <widget class="QPushButton" name="buttonHelp">
-        <property name="font">
-         <font>
-          <family>Montserrat Alternates</family>
-          <pointsize>-1</pointsize>
-          <italic>false</italic>
-          <bold>true</bold>
-         </font>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #53c8db;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>HELP</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="0">
-       <widget class="QPushButton" name="buttonLn">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>ln(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="2">
-       <widget class="QPushButton" name="buttonAtan">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>atan(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="2">
-       <widget class="QPushButton" name="buttonClear">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
+    <item row="1" column="2">
+     <widget class="QPushButton" name="buttonClear">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
   border: none;
   border-radius: 5px;
   color: white;
@@ -412,16 +725,16 @@ QPushButton:hover {
   background-color: #2E8B57;
 }
 </string>
-        </property>
-        <property name="text">
-         <string>Clear All</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QPushButton" name="buttonPower">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
+      </property>
+      <property name="text">
+       <string>Clear All</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="0">
+     <widget class="QPushButton" name="buttonCsc">
+      <property name="styleSheet">
+       <string notr="true">QPushButton {
   border: none;
   border-radius: 5px;
   color: white;
@@ -435,219 +748,11 @@ QPushButton:hover {
   background-color: #2E8B57;
 }
 </string>
-        </property>
-        <property name="text">
-         <string>x^y</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="2">
-       <widget class="QPushButton" name="buttonCot">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>cot(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="0">
-       <widget class="QPushButton" name="buttonCsc">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>csc(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="3" column="1">
-       <widget class="QPushButton" name="buttonSec">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>sec(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="1">
-       <widget class="QPushButton" name="buttonLogy">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>log_y(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="8" column="2">
-       <widget class="QPushButton" name="buttonDivi">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>1/x</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="0">
-       <widget class="QPushButton" name="buttonSqrt">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>sqrt_t(x)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="1">
-       <widget class="QPushButton" name="buttonRoot">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>root(x, y)</string>
-        </property>
-       </widget>
-      </item>
-      <item row="9" column="2">
-       <widget class="QPushButton" name="buttonFactorial">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #232938;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}
-</string>
-        </property>
-        <property name="text">
-         <string>x!</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="2">
-       <widget class="QPushButton" name="buttonPI">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 18px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #53c8db;
-}
-
-QPushButton:hover {
-  background-color: #2E8B57;
-}</string>
-        </property>
-        <property name="text">
-         <string>PI</string>
-        </property>
-       </widget>
-      </item>
-     </layout>
+      </property>
+      <property name="text">
+       <string>csc(x)</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>

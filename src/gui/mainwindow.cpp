@@ -78,6 +78,21 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->buttonPI, &QPushButton::clicked,
             this, &MainWindow::onButtonPIClicked);
 
+    connect(ui->buttonAcos, &QPushButton::clicked,
+            this, &MainWindow::onButtonAcosClicked);
+
+    connect(ui->buttonLog10, &QPushButton::clicked,
+            this, &MainWindow::onButtonLog10Clicked);
+
+    connect(ui->buttonXSign, &QPushButton::clicked,
+            this, &MainWindow::onButtonXSignClicked);
+
+    connect(ui->buttonYSign, &QPushButton::clicked,
+            this, &MainWindow::onButtonYSignClicked);
+
+    connect(ui->buttonEqualSign, &QPushButton::clicked,
+            this, &MainWindow::onButtonEqualSignClicked);
+
     QRegularExpressionValidator *validator =
     new QRegularExpressionValidator(QRegularExpression(
                         "^[0-9]{0,50}(\\.[0-9]{0,50})?$"), this);
@@ -121,6 +136,9 @@ void MainWindow::onButtonClearClicked() {
     ui->lineEditX->clear();
     ui->lineEditY->clear();
     ui->plaintTextEqual->clear();
+    setGreenButtonStyle(ui->buttonXSign);
+    setGreenButtonStyle(ui->buttonYSign);
+    setGreenButtonStyle(ui->buttonEqualSign);
 }
 
 void MainWindow::onButtonDiviClicked() {
@@ -537,4 +555,68 @@ void MainWindow::onButtonPIClicked() {
         ui->lineEditY->setText(QString(pi.str().c_str()));
     else
         ui->lineEditX->setText(QString(pi.str().c_str()));
+}
+
+void MainWindow::onButtonAcosClicked() {
+
+}
+
+void MainWindow::onButtonLog10Clicked() {
+
+}
+
+void MainWindow::onButtonXSignClicked() {
+    string label = ui->buttonXSign->text().toStdString();
+
+    if(label!="+")
+        setGreenButtonStyle(ui->buttonXSign);
+    else
+        setRedButtonStyle(ui->buttonXSign);
+}
+
+void MainWindow::onButtonYSignClicked() {
+    string label = ui->buttonYSign->text().toStdString();
+    if(label!="+")
+        setGreenButtonStyle(ui->buttonYSign);
+    else
+        setRedButtonStyle(ui->buttonYSign);
+
+}
+
+void MainWindow::onButtonEqualSignClicked() {
+    string label = ui->buttonEqualSign->text().toStdString();
+    if(label!="+")
+        setGreenButtonStyle(ui->buttonEqualSign);
+    else
+        setRedButtonStyle(ui->buttonEqualSign);
+}
+
+void MainWindow::setGreenButtonStyle(QPushButton* button){
+    button->setText("+");
+    button->setStyleSheet(
+            "QPushButton {"
+            "   border: none;"
+            "   border-radius: 5px;"
+            "   color: white;"
+            "   font-size: 22px;"
+            "   font-weight: bold;"
+            "   padding: 10px 20px;"
+            "   background-color: #2E8B57;"
+            "}"
+    );
+}
+
+void MainWindow::setRedButtonStyle(QPushButton* button){
+    button->setText("-");
+    button->setStyleSheet(
+            "QPushButton {"
+            "   border: none;"
+            "   border-radius: 5px;"
+            "   color: white;"
+            "   font-size: 22px;"
+            "   font-weight: bold;"
+            "   padding: 10px 20px;"
+            "   background-color: #de505c;"
+            "}"
+    );
 }

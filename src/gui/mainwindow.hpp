@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QPushButton>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -19,6 +20,10 @@ public:
 private:
 
     void showErrorDialog(const QString& message);
+
+    void setGreenButtonStyle(QPushButton* button);
+
+    void setRedButtonStyle(QPushButton* button);
 
     Ui::MainWindow *ui;
 
@@ -67,6 +72,16 @@ private slots:
     void onButtonFactorialClicked();
 
     void onButtonPIClicked();
+
+    void onButtonAcosClicked();
+
+    void onButtonLog10Clicked();
+
+    void onButtonXSignClicked();
+
+    void onButtonYSignClicked();
+
+    void onButtonEqualSignClicked();
 
 };
 #endif // MAINWINDOW_H
