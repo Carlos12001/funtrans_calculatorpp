@@ -361,6 +361,15 @@ void MainWindow::onButtonPowerClicked() {
     decimal_50_digits y(y_str);
     resetEqual();
 
+    if (y==0) {
+        ui->plaintTextEqual->setPlainText("1");
+        return;
+    }
+    if (x==0) {
+        ui->plaintTextEqual->setPlainText("0");
+        return;
+    }
+
     decimal_50_digits result = 0;
 
     if(funtrans::is_positive_integer(y)){
@@ -467,15 +476,25 @@ void MainWindow::onButtonRootClicked() {
         showErrorDialog("Valor de y está vació.");
         return;
     }
+
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
     string y_str = ui->lineEditY->text().toStdString();
     decimal_50_digits y(y_str);
     resetEqual();
 
+    if (y==0) {
+        showErrorDialog("Valor de y no permitido");
+        return;
+    }
+    if (x==0) {
+        ui->plaintTextEqual->setPlainText("0");
+        return;
+    }
+
     if(ui->buttonYSign->text().toStdString()!="+"){
         showErrorDialog("Valor de y no permitido"
-                        "(tiene que ser entero si quieres usar decimales"
+                        "(tiene que ser entero si quieres negativos"
                         " utiliza power(x, y)).");
         return;
     }
@@ -489,9 +508,18 @@ void MainWindow::onButtonRootClicked() {
 
     int y_int = static_cast<int>(floor(y));
 
+    if(ui->buttonXSign->text().toStdString()!="+"&&y_int%2!=0)
+        setRedButtonStyle(ui->buttonEqualSign);
+    if(ui->buttonXSign->text().toStdString()!="+"&&y_int%2==0){
+        showErrorDialog("Valor de x no permitido "
+                        "(ya que tiene que ser un valor positivo "
+                        "porque y es par).");
+        return;
+    }
+
     decimal_50_digits result = funtrans::root_t(x, y_int);
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-} //falta salida negativa
+}
 
 void MainWindow::onButtonAsinClicked() {
     if (ui->lineEditX->text().isEmpty()) {
