@@ -268,6 +268,32 @@ void MainWindow::onButtonLnClicked() {
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 }
 
+void MainWindow::onButtonLog10Clicked() {
+    if (ui->lineEditX->text().isEmpty()) {
+        showErrorDialog("Valor de x está vació.");
+        return;
+    }
+    if (ui->lineEditY->text().isEmpty()) {
+        showErrorDialog("Valor de y está vació.");
+        return;
+    }
+    string x_str = ui->lineEditX->text().toStdString();
+    decimal_50_digits x(x_str);
+    string y_str = ui->lineEditY->text().toStdString();
+    decimal_50_digits y(y_str);
+    resetEqual();
+
+    if (x <= 0) {
+        showErrorDialog("Valor de x no permitido "
+                        "(debe ser mayor que cero)");
+        return;
+    }
+
+    decimal_50_digits result = funtrans::log_t(10, x);
+
+    ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
+}
+
 void MainWindow::onButtonLogyClicked() {
     if (ui->lineEditX->text().isEmpty()) {
         showErrorDialog("Valor de x está vació.");
@@ -418,11 +444,40 @@ void MainWindow::onButtonAsinClicked() {
         return;
     }
 
-    if(ui->buttonEqualSign->text().toStdString()!="+"){
+    if(ui->buttonXSign->text().toStdString()!="+")
         setRedButtonStyle(ui->buttonEqualSign);
-    }
+
 
     decimal_50_digits result = funtrans::asin_t(x);
+
+    ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
+}
+
+void MainWindow::onButtonAcosClicked() {
+    if (ui->lineEditX->text().isEmpty()) {
+        showErrorDialog("Valor de x está vació.");
+        return;
+    }
+    string x_str = ui->lineEditX->text().toStdString();
+    decimal_50_digits x(x_str);
+    resetYAndEqual();
+
+
+    if (x < -1 || x > 1) {
+        showErrorDialog("Valor de x no permitido");
+        return;
+    }
+
+    decimal_50_digits result = 0;
+
+    if(ui->buttonXSign->text().toStdString()!="+")
+        result = funtrans::abs_t(funtrans::pi_t +
+                                 funtrans::asin_t(x));
+    else
+        result = funtrans::abs_t(funtrans::pi_t -
+                                 funtrans::asin_t(x));
+
+
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 }
@@ -440,8 +495,9 @@ void MainWindow::onButtonAtanClicked() {
     decimal_50_digits result = funtrans::atan_t(x);
 
 
-    if(ui->buttonEqualSign->text().toStdString()!="+")
+    if(ui->buttonXSign->text().toStdString()!="+")
         setRedButtonStyle(ui->buttonEqualSign);
+
 
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
@@ -549,40 +605,6 @@ void MainWindow::onButtonPIClicked() {
         ui->lineEditY->setText(QString(pi.str().c_str()));
     else
         ui->lineEditX->setText(QString(pi.str().c_str()));
-}
-
-void MainWindow::onButtonAcosClicked() {
-    if (ui->lineEditX->text().isEmpty()) {
-        showErrorDialog("Valor de x está vació.");
-        return;
-    }
-    string x_str = ui->lineEditX->text().toStdString();
-    decimal_50_digits x(x_str);
-    resetYAndEqual();
-
-
-    if (x < -1 || x > 1) {
-        showErrorDialog("Valor de x no permitido");
-        return;
-    }
-
-    decimal_50_digits result = 0;
-
-    if(ui->buttonEqualSign->text().toStdString()!="+")
-        result = funtrans::abs_t(funtrans::pi_t +
-                                                   funtrans::asin_t(x));
-
-    else
-        result = funtrans::abs_t(funtrans::pi_t -
-                                                   funtrans::asin_t(x));
-
-
-
-    ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
-
-void MainWindow::onButtonLog10Clicked() {
-
 }
 
 void MainWindow::onButtonXSignClicked() {

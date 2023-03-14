@@ -536,18 +536,17 @@ QPushButton:hover {
     </item>
     <item row="0" column="0" colspan="3">
      <layout class="QGridLayout" name="gridButton">
-      <item row="2" column="0">
-       <widget class="QLabel" name="labelEqual">
+      <item row="0" column="0">
+       <widget class="QLabel" name="labelX">
         <property name="styleSheet">
-         <string notr="true">font: 32pt &quot;Montserrat Alternates&quot;;
-color:#53c8db;</string>
+         <string notr="true">font: 18pt &quot;Montserrat Alternates&quot;;</string>
         </property>
         <property name="text">
-         <string>=</string>
+         <string>x =</string>
         </property>
        </widget>
       </item>
-      <item row="2" column="2">
+      <item row="2" column="3">
        <widget class="QPlainTextEdit" name="plaintTextEqual">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Ignored">
@@ -580,7 +579,7 @@ color:#53c8db;</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="2">
+      <item row="0" column="3">
        <widget class="QLineEdit" name="lineEditX">
         <property name="text">
          <string/>
@@ -596,17 +595,68 @@ color:#53c8db;</string>
         </property>
        </widget>
       </item>
-      <item row="0" column="0">
-       <widget class="QLabel" name="labelX">
+      <item row="1" column="2">
+       <widget class="QPushButton" name="buttonYSign">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #2E8B57;
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QPushButton" name="buttonXSign">
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 10px 20px;
+  background-color: #2E8B57;
+}
+
+</string>
+        </property>
+        <property name="text">
+         <string>+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0">
+       <widget class="QLabel" name="labelEqual">
+        <property name="styleSheet">
+         <string notr="true">font: 32pt &quot;Montserrat Alternates&quot;;
+color:#53c8db;</string>
+        </property>
+        <property name="text">
+         <string>=</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="labelY">
         <property name="styleSheet">
          <string notr="true">font: 18pt &quot;Montserrat Alternates&quot;;</string>
         </property>
         <property name="text">
-         <string>x =</string>
+         <string>y =</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="2">
+      <item row="1" column="3">
        <widget class="QLineEdit" name="lineEditY">
         <property name="font">
          <font>
@@ -633,61 +683,23 @@ color:#53c8db;</string>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QLabel" name="labelY">
-        <property name="styleSheet">
-         <string notr="true">font: 18pt &quot;Montserrat Alternates&quot;;</string>
-        </property>
-        <property name="text">
-         <string>y =</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
+      <item row="2" column="2">
        <widget class="QPushButton" name="buttonEqualSign">
         <property name="enabled">
          <bool>false</bool>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #2E8B57;
-}
-
-</string>
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
         </property>
-        <property name="text">
-         <string>+</string>
+        <property name="maximumSize">
+         <size>
+          <width>53</width>
+          <height>250</height>
+         </size>
         </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QPushButton" name="buttonYSign">
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #2E8B57;
-}
-
-</string>
-        </property>
-        <property name="text">
-         <string>+</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QPushButton" name="buttonXSign">
         <property name="styleSheet">
          <string notr="true">QPushButton {
   border: none;
