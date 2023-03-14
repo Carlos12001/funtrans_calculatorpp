@@ -172,6 +172,10 @@ void MainWindow::onButtonExpClicked() {
 
     decimal_50_digits result = funtrans::exp_t(x);
 
+    if(ui->buttonXSign->text().toStdString()!="+") {
+        decimal_50_digits result = funtrans::exp_t(-1*x);
+    }
+
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 }
 
@@ -185,11 +189,6 @@ void MainWindow::onButtonSinClicked() {
     decimal_50_digits pi = funtrans::pi_t;
     resetYAndEqual();
 
-    if (x > pi / 2 || x < -pi / 2) {
-        showErrorDialog("Valor de x no permitido "
-                        "(debe estar en el rango [-π/2, π/2])");
-        return;
-    }
 
     decimal_50_digits result = funtrans::sin_t(x);
 
@@ -233,12 +232,12 @@ void MainWindow::onButtonTanClicked() {
 
     decimal_50_digits pi = funtrans::pi_t;
 
-    if (abs(x - (pi / 2)) < 1e-15 || abs(x - (3 * pi / 2)) < 1e-15 ||
-        abs(x - (5 * pi / 2)) < 1e-15 ||
-        abs(x - (7 * pi / 2)) < 1e-15) {
-        showErrorDialog("Valor de x no permitido");
-        return;
-    }
+//    if (abs(x - (pi / 2)) < 1e-15 || abs(x - (3 * pi / 2)) < 1e-15 ||
+//        abs(x - (5 * pi / 2)) < 1e-15 ||
+//        abs(x - (7 * pi / 2)) < 1e-15) {
+//        showErrorDialog("Valor de x no permitido");
+//        return;
+//    }
 
     decimal_50_digits result = funtrans::tan_t(x);
 
@@ -280,15 +279,9 @@ void MainWindow::onButtonLog10Clicked() {
         showErrorDialog("Valor de x está vació.");
         return;
     }
-    if (ui->lineEditY->text().isEmpty()) {
-        showErrorDialog("Valor de y está vació.");
-        return;
-    }
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
-    string y_str = ui->lineEditY->text().toStdString();
-    decimal_50_digits y(y_str);
-    resetEqual();
+    resetYAndEqual();
 
     if(ui->buttonXSign->text().toStdString()!="+"){
         showErrorDialog("Valor de x no permitido"
@@ -462,6 +455,13 @@ void MainWindow::onButtonRootClicked() {
     decimal_50_digits y(y_str);
     resetEqual();
 
+    if(ui->buttonYSign->text().toStdString()!="+"){
+        showErrorDialog("Valor de y no permitido"
+                        "(tiene que ser entero si quieres usar decimales"
+                        " utiliza power(x, y)).");
+        return;
+    }
+
     if (!funtrans::is_positive_integer(y)) {
         showErrorDialog("Valor de y no permitido "
                         "(tiene que ser entero si quieres usar decimales"
@@ -516,10 +516,10 @@ void MainWindow::onButtonAcosClicked() {
     decimal_50_digits result = 0;
 
     if(ui->buttonXSign->text().toStdString()!="+")
-        result = funtrans::abs_t(funtrans::pi_t +
+        result = funtrans::abs_t(funtrans::pi_t * 0.5 +
                                  funtrans::asin_t(x));
     else
-        result = funtrans::abs_t(funtrans::pi_t -
+        result = funtrans::abs_t(funtrans::pi_t * 0.5 -
                                  funtrans::asin_t(x));
 
 
@@ -624,6 +624,10 @@ void MainWindow::onButtonFactorialClicked() {
     if(ui->buttonXSign->text().toStdString()!="+"){
         showErrorDialog("Valor de x no permitido");
         return;
+    }
+
+    if(x==0){
+        ui->plaintTextEqual->setPlainText("1");
     }
 
     if (x<0&&!funtrans::is_positive_integer(x)) {
