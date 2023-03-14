@@ -257,6 +257,12 @@ void MainWindow::onButtonLnClicked() {
     decimal_50_digits x(x_str);
     resetYAndEqual();
 
+    if(ui->buttonXSign->text().toStdString()!="+"){
+        showErrorDialog("Valor de x no permitido"
+                        "(deben ser mayores que cero)");
+        return;
+    }
+
     if (x <= 0) {
         showErrorDialog("Valor de x no permitido "
                         "(debe ser mayor que cero)");
@@ -283,6 +289,12 @@ void MainWindow::onButtonLog10Clicked() {
     decimal_50_digits y(y_str);
     resetEqual();
 
+    if(ui->buttonXSign->text().toStdString()!="+"){
+        showErrorDialog("Valor de x no permitido"
+                        "(deben ser mayores que cero)");
+        return;
+    }
+
     if (x <= 0) {
         showErrorDialog("Valor de x no permitido "
                         "(debe ser mayor que cero)");
@@ -308,6 +320,18 @@ void MainWindow::onButtonLogyClicked() {
     string y_str = ui->lineEditY->text().toStdString();
     decimal_50_digits y(y_str);
     resetEqual();
+
+    if(ui->buttonXSign->text().toStdString()!="+"){
+        showErrorDialog("Valor de x no permitido"
+                        "(deben ser mayores que cero)");
+        return;
+    }
+
+    if(ui->buttonYSign->text().toStdString()!="+"){
+        showErrorDialog("Valor de y no permitido"
+                        "(deben ser mayores que cero)");
+        return;
+    }
 
     if (x <= 0 || y <= 0) {
         showErrorDialog("Valores de x e y no permitidos "
@@ -376,6 +400,12 @@ void MainWindow::onButtonSqrtClicked() {
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
     resetYAndEqual();
+
+    if(ui->buttonXSign->text().toStdString()!="+"){
+        showErrorDialog("Valor de x no permitido"
+                        "(deben ser mayores que cero)");
+        return;
+    }
 
     if (x < 0) {
         showErrorDialog("Valor de x no permitido "
@@ -575,6 +605,11 @@ void MainWindow::onButtonFactorialClicked() {
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
     resetYAndEqual();
+
+    if(ui->buttonXSign->text().toStdString()!="+"){
+        showErrorDialog("Valor de x no permitido");
+        return;
+    }
 
     if (x<0&&!funtrans::is_positive_integer(x)) {
         showErrorDialog("Valor de x no permitido");
