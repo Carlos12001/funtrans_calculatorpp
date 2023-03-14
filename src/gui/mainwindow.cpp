@@ -153,6 +153,9 @@ void MainWindow::onButtonDiviClicked() {
         return;
     }
 
+    if(ui->buttonXSign->text().toStdString()!="+")
+        setRedButtonStyle(ui->buttonEqualSign);
+
     decimal_50_digits result = funtrans::divi_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
@@ -166,12 +169,6 @@ void MainWindow::onButtonExpClicked() {
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
     resetYAndEqual();
-
-    if (x < -1100) {
-        showErrorDialog("Valor de x no permitido "
-                        "(debe ser mayor que -1100)");
-        return;
-    }
 
     decimal_50_digits result = funtrans::exp_t(x);
 
@@ -199,7 +196,7 @@ void MainWindow::onButtonSinClicked() {
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 
 
-}
+} //falta salida negativa
 
 void MainWindow::onButtonCosClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -223,7 +220,7 @@ void MainWindow::onButtonCosClicked() {
     }
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonTanClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -246,7 +243,7 @@ void MainWindow::onButtonTanClicked() {
     decimal_50_digits result = funtrans::tan_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonLnClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -272,7 +269,7 @@ void MainWindow::onButtonLnClicked() {
     decimal_50_digits result = funtrans::ln_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonLog10Clicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -304,7 +301,7 @@ void MainWindow::onButtonLog10Clicked() {
     decimal_50_digits result = funtrans::log_t(10, x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonLogyClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -342,7 +339,7 @@ void MainWindow::onButtonLogyClicked() {
     decimal_50_digits result = funtrans::log_t(y, x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonPowerClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -362,7 +359,7 @@ void MainWindow::onButtonPowerClicked() {
     decimal_50_digits result = funtrans::power_t(x, y);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonSinhClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -372,6 +369,9 @@ void MainWindow::onButtonSinhClicked() {
     string x_str = ui->lineEditX->text().toStdString();
     decimal_50_digits x(x_str);
     resetYAndEqual();
+
+    if(ui->buttonXSign->text().toStdString()!="+")
+        setRedButtonStyle(ui->buttonEqualSign);
 
     decimal_50_digits result = funtrans::sinh_t(x);
 
@@ -427,6 +427,9 @@ void MainWindow::onButtonTanhClicked() {
     decimal_50_digits x(x_str);
     resetYAndEqual();
 
+    if(ui->buttonXSign->text().toStdString()!="+")
+        setRedButtonStyle(ui->buttonEqualSign);
+
     decimal_50_digits result = funtrans::tanh_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
@@ -458,7 +461,7 @@ void MainWindow::onButtonRootClicked() {
 
     decimal_50_digits result = funtrans::root_t(x, y_int);
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonAsinClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -552,7 +555,7 @@ void MainWindow::onButtonCscClicked() {
     decimal_50_digits result = funtrans::csc_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonSecClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -573,7 +576,7 @@ void MainWindow::onButtonSecClicked() {
     decimal_50_digits result = funtrans::sec_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonCotClicked() {
     if (ui->lineEditX->text().isEmpty()) {
@@ -595,7 +598,7 @@ void MainWindow::onButtonCotClicked() {
     decimal_50_digits result = funtrans::cot_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
-}
+} //falta salida negativa
 
 void MainWindow::onButtonFactorialClicked() {
     if (ui->lineEditX->text().isEmpty()) {
