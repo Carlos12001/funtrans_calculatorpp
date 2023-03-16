@@ -58,6 +58,8 @@ public:
 
     static decimal_50_digits acos(decimal_50_digits x);
 
+    static decimal_50_digits log10_t(decimal_50_digits x);
+
 private:
 
     static const decimal_50_digits tol_t;

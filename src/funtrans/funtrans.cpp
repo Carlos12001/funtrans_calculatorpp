@@ -403,3 +403,9 @@ decimal_50_digits funtrans::acos(decimal_50_digits x) {
         return 0;
     }
 }
+
+decimal_50_digits funtrans::log10_t(decimal_50_digits x) {
+    if (x > 0)
+        return log_t(10, x);
+    return 0;
+}
