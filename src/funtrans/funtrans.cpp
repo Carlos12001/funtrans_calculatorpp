@@ -84,7 +84,6 @@ bool funtrans::is_positive_integer(const decimal_50_digits & x) {
     return (x == valor_entero) && (valor_entero > 0);
 }
 
-
 int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
     if (1 <= x && x <= factorial_t(20))
         return 2;
