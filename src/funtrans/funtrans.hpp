@@ -60,7 +60,7 @@ public:
 
     static decimal_50_digits log10_t(const decimal_50_digits& x);
 
-    static decimal_50_digits trigonimetric_ajust(const decimal_50_digits& x);
+    static decimal_50_digits trigonometric_ajust(const decimal_50_digits& x);
 
 private:
 

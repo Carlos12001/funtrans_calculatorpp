@@ -407,13 +407,13 @@ decimal_50_digits funtrans::log10_t(const decimal_50_digits& x) {
     return 0;
 }
 
-decimal_50_digits funtrans::trigonimetric_ajust(const decimal_50_digits& x) {
+decimal_50_digits funtrans::trigonometric_ajust(const decimal_50_digits& x) {
     if(-2*pi_t <= x && x <= 2*pi_t)
         return x;
     else{
         int multp = 0 < x ? 1 : -1;
         decimal_50_digits result = abs(x);
-        while(x > 2*pi_t)
+        while(2*pi_t < result)
             result -= 2*pi_t;
         return multp*result;
     }
