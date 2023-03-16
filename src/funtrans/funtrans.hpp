@@ -56,9 +56,11 @@ public:
 
     static decimal_50_digits csc_t(decimal_50_digits x);
 
-    static decimal_50_digits acos(decimal_50_digits x);
+    static decimal_50_digits acos(const decimal_50_digits& x);
 
-    static decimal_50_digits log10_t(decimal_50_digits x);
+    static decimal_50_digits log10_t(const decimal_50_digits& x);
+
+    static decimal_50_digits trigonimetric_ajust(const decimal_50_digits& x);
 
 private:
 
@@ -69,7 +71,6 @@ private:
     static int exponent_eps_aux_divi_t(const decimal_50_digits& x);
 
     static decimal_50_digits adjust_inter(decimal_50_digits x);
-
 
 };
 

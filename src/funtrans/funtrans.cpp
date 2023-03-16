@@ -389,7 +389,7 @@ decimal_50_digits funtrans::sqrt_t(const decimal_50_digits &x) {
     return power_t(abs_t(x), divi_t(2));
 }
 
-decimal_50_digits funtrans::acos(decimal_50_digits x) {
+decimal_50_digits funtrans::acos(const decimal_50_digits& x) {
     if (x >= -1 && x <= 1) {
         int multp = 0 < x ? 1 : -1;
         return pi_t * 0.5 - multp * asin_t(abs(x));
@@ -401,8 +401,20 @@ decimal_50_digits funtrans::acos(decimal_50_digits x) {
     }
 }
 
-decimal_50_digits funtrans::log10_t(decimal_50_digits x) {
+decimal_50_digits funtrans::log10_t(const decimal_50_digits& x) {
     if (x > 0)
         return log_t(10, x);
     return 0;
+}
+
+decimal_50_digits funtrans::trigonimetric_ajust(const decimal_50_digits& x) {
+    if(-2*pi_t <= x && x <= 2*pi_t)
+        return x;
+    else{
+        int multp = 0 < x ? 1 : -1;
+        decimal_50_digits result = abs(x);
+        while(x > 2*pi_t)
+            result -= 2*pi_t;
+        return multp*result;
+    }
 }
