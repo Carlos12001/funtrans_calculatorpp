@@ -391,3 +391,15 @@ decimal_50_digits funtrans::adjust_inter(decimal_50_digits x) {
 decimal_50_digits funtrans::sqrt_t(const decimal_50_digits &x) {
     return power_t(abs_t(x), divi_t(2));
 }
+
+decimal_50_digits funtrans::acos(decimal_50_digits x) {
+    if (x >= -1 && x <= 1) {
+        int multp = 0 < x ? 1 : -1;
+        return pi_t * 0.5 - multp * asin_t(abs(x));
+    }
+    else {
+        cout << "x fuera del dominio, "
+                "(x pertenece -1<x<1)" << endl;
+        return 0;
+    }
+}
