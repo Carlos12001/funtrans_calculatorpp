@@ -262,6 +262,7 @@ decimal_50_digits funtrans::exp_t(const decimal_50_digits &x) {
     }
     return sk;
 }
+
 /* ---------------- */
 /* Function: sinh_t */
 /* ---------------- */
@@ -315,7 +316,6 @@ decimal_50_digits funtrans::sec_t(const decimal_50_digits& x){
     else
         return 0;
 }
-
 
 /* cot_t */
 decimal_50_digits funtrans::cot_t(const decimal_50_digits& x){
