@@ -93,10 +93,26 @@ MainWindow::MainWindow(QWidget *parent)
     ui->lineEditX->setValidator(validator);
     ui->lineEditY->setValidator(validator);
 
+    connect(ui->lineEditX, &QLineEdit::textChanged,
+            this, &MainWindow::onLineEditXTextChanged);
+
+    connect(ui->lineEditY, &QLineEdit::textChanged,
+            this, &MainWindow::onLineEditYTextChanged);
+
 }
 
 MainWindow::~MainWindow(){
     delete ui;
+}
+
+void MainWindow::onLineEditXTextChanged(const QString& text){
+    if (text.isEmpty())
+        setGreenButtonStyle(ui->buttonXSign);
+}
+
+void MainWindow::onLineEditYTextChanged(const QString& text){
+    if (text.isEmpty())
+        setGreenButtonStyle(ui->buttonYSign);
 }
 
 void MainWindow::showErrorDialog(const QString& message) {

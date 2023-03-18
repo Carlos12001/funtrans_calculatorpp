@@ -34,6 +34,10 @@ private:
 
     void resetEqual();
 
+    void onLineEditXTextChanged(const QString& text);
+
+    void onLineEditYTextChanged(const QString& text);
+
     Ui::MainWindow *ui;
 
 private slots:
