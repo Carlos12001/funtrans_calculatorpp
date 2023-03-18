@@ -474,3 +474,14 @@ decimal_50_digits funtrans::trigonometric_ajust(const decimal_50_digits& x) {
         return multp*result;
     }
 }
+
+bool funtrans::check_pi_divi2(const decimal_50_digits &x) {
+    decimal_50_digits mult = pi_t * decimal_50_digits("0.5");
+    return abs(x - (round(x / mult) * mult)) >
+            decimal_50_digits("0.000000001");
+}
+
+bool funtrans::notRealNumber(const string &s) {
+    std::regex patron(R"(^-?\d+(\.\d+)?$)");
+    return !(std::regex_match(s, patron));
+}

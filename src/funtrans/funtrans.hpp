@@ -5,6 +5,7 @@
 #ifndef FUNTRANS_CALCULATORPP_FUNTRANS_HPP
 #define FUNTRANS_CALCULATORPP_FUNTRANS_HPP
 #include "../header.hpp"
+#include <regex>
 
 class funtrans {
 public:
@@ -61,6 +62,10 @@ public:
     static decimal_50_digits log10_t(const decimal_50_digits& x);
 
     static decimal_50_digits trigonometric_ajust(const decimal_50_digits& x);
+
+    static bool check_pi_divi2(const decimal_50_digits& x);
+
+    static bool notRealNumber(const string& s);
 
 private:
 
