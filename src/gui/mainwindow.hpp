@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "../header.hpp"
 #include <QMainWindow>
 #include <QPushButton>
 
@@ -19,11 +20,17 @@ public:
 
 private:
 
-    void showErrorDialog(const QString& message);
+    static void showErrorDialog(const QString& message);
 
-    void setGreenButtonStyle(QPushButton* button);
+    static void setGreenButtonStyle(QPushButton* button);
 
-    void setRedButtonStyle(QPushButton* button);
+    static void setRedButtonStyle(QPushButton* button);
+
+    bool incorrectInputX();
+
+    bool incorrectInputY();
+
+    static bool notRealNumber(const string& s);
 
     void resetYAndEqual();
 
@@ -84,8 +91,6 @@ private slots:
     void onButtonXSignClicked();
 
     void onButtonYSignClicked();
-
-    void onButtonEqualSignClicked();
 
 };
 #endif // MAINWINDOW_H

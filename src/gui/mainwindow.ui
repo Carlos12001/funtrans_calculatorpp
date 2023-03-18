@@ -86,7 +86,7 @@ QPushButton:hover {
 </string>
       </property>
       <property name="text">
-       <string>acos(x)</string>
+       <string>acos_t(x)</string>
       </property>
      </widget>
     </item>
@@ -680,41 +680,6 @@ color:#53c8db;</string>
         </property>
         <property name="clearButtonEnabled">
          <bool>false</bool>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QPushButton" name="buttonEqualSign">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>53</width>
-          <height>250</height>
-         </size>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">QPushButton {
-  border: none;
-  border-radius: 5px;
-  color: white;
-  font-size: 22px;
-  font-weight: bold;
-  padding: 10px 20px;
-  background-color: #2E8B57;
-}
-
-</string>
-        </property>
-        <property name="text">
-         <string>+</string>
         </property>
        </widget>
       </item>
