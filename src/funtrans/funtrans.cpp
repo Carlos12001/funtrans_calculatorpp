@@ -475,10 +475,11 @@ decimal_50_digits funtrans::trigonometric_ajust(const decimal_50_digits& x) {
     }
 }
 
-bool funtrans::check_pi_divi2(const decimal_50_digits &x) {
-    decimal_50_digits mult = pi_t * decimal_50_digits("0.5");
-    return abs(x - (round(x / mult) * mult)) >
-            decimal_50_digits("0.000000001");
+bool funtrans::is_mult_pi_divi2(const decimal_50_digits &x) {
+    decimal_50_digits mult = funtrans::pi_t * decimal_50_digits("0.5");
+    decimal_50_digits diff = abs(x - (round(x / mult) * mult));
+    return diff < decimal_50_digits("0.000000001") ||
+    diff > mult - decimal_50_digits("0.000000001");
 }
 
 bool funtrans::notRealNumber(const string &s) {

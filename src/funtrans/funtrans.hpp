@@ -63,7 +63,7 @@ public:
 
     static decimal_50_digits trigonometric_ajust(const decimal_50_digits& x);
 
-    static bool check_pi_divi2(const decimal_50_digits& x);
+    static bool is_mult_pi_divi2(const decimal_50_digits& x);
 
     static bool notRealNumber(const string& s);
 
