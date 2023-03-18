@@ -12,6 +12,10 @@ const decimal_50_digits funtrans::tol_t = 0.0000000001;
 const int funtrans::iteration_max_t = 2500;
 
 decimal_50_digits funtrans::factorial_t(decimal_50_digits x) {
+    if (x < 0){
+        cout << "Error factorial x<0 " << endl;
+        return 1;
+    }
     decimal_50_digits result = 1;
     for (int i = 0; i <= iteration_max_t; ++i) {
         if(0==x)
@@ -24,12 +28,17 @@ decimal_50_digits funtrans::factorial_t(decimal_50_digits x) {
 decimal_50_digits funtrans::divi_t(const decimal_50_digits& x) {
 
     // Check 1/0
-    if(x==0)
-        return 0;
+    if (x == 0){
+        cout << "Error x==0 " << endl;
+        return 1;
+    }
+
+    decimal_50_digits a_x = abs_t(x);
+    int mult = 0 < x ? 1 : -1;
 
     // Check eps condition
     decimal_50_digits eps = 2.2204 * 0.0000000000000001;
-    int exponent_eps = exponent_eps_aux_divi_t(x);
+    int exponent_eps = exponent_eps_aux_divi_t(a_x);
     if (exponent_eps==0)
         return 0;
 
@@ -38,13 +47,13 @@ decimal_50_digits funtrans::divi_t(const decimal_50_digits& x) {
     decimal_50_digits x_k;
 
     for (int i = 0; i < iteration_max_t; ++i) {
-        x_k = previous_x_k*(2 - x*previous_x_k);
+        x_k = previous_x_k*(2 - a_x * previous_x_k);
         if (abs_t(x_k-previous_x_k) < tol_t*abs_t(x_k))
             break;
         else
             previous_x_k = x_k;
     }
-    return x_k;
+    return mult*x_k;
 
 }
 
@@ -61,6 +70,7 @@ decimal_50_digits funtrans::power_t(const decimal_50_digits& x,
     if(y==0)
         return 1;
 
+    int valor_entero = static_cast<int>(y);
 
     // Only works for integers and positives
     if(is_positive_integer(y)){
@@ -70,9 +80,16 @@ decimal_50_digits funtrans::power_t(const decimal_50_digits& x,
             result *= x;
         }
     }
-    else
+    else if(y==valor_entero){
+        return divi_t(power_t(x, abs_t(y)));
+    }
+    else if(0<x) {
         result = exp_t(y * ln_t(abs_t(x)));
-
+    }
+    else {
+        cout << "Error para un y decimal x tiene que ser 0<x" << endl;
+        return 1;
+    }
 
     return result;
 }
@@ -104,36 +121,49 @@ decimal_50_digits funtrans::abs_t(const decimal_50_digits& a){
         return a;
 }
 
-decimal_50_digits funtrans::ln_t(const decimal_50_digits& a) {
+decimal_50_digits funtrans::ln_t(const decimal_50_digits& x) {
+
+    if (x <= 0){
+        cout << "Error x<=0 " << endl;
+        return 1;
+    }
+
     decimal_50_digits S = 0;
-    decimal_50_digits x = (2 * (a - 1)) * divi_t((a + 1));
+    decimal_50_digits constant = (2 * (x - 1)) * divi_t((x + 1));
     decimal_50_digits S_k;
     decimal_50_digits S_k_1;
 
     for (int n = 0; n <= iteration_max_t; n++) {
 
         S_k = divi_t((2*n)+1) *
-                power_t(((a-1)* divi_t(a+1)),2 * n);
+                power_t(((x - 1) * divi_t(x + 1)), 2 * n);
 
         S_k_1 = divi_t((2*(n+1))+1) *
-                power_t(((a-1)* divi_t(a+1)),2 * (n+1));
+                power_t(((x - 1) * divi_t(x + 1)), 2 * (n + 1));
 
-        if (abs_t(( x * S_k_1)-( x * S_k)) < tol_t)
-            return abs_t(S + (x * S_k));
+        if (abs_t((constant * S_k_1) - (constant * S_k)) < tol_t)
+            return S + (constant * S_k);
 
         else
-            S += (x * S_k);
+            S += (constant * S_k);
 
     }
-    return abs_t(S);
+    return S;
 }
 
-decimal_50_digits  funtrans::log_t(const decimal_50_digits& a,
+decimal_50_digits  funtrans::log_t(const decimal_50_digits& y,
                                    const decimal_50_digits& x){
-    if (a > 0 && x > 0)
-        return ln_t(x) * divi_t(ln_t(a));
-
-    return 0;
+    if (y > 0 && x > 0){
+        auto b = ln_t(y);
+        if (y!=1 && b!=0)
+            return ln_t(x) * divi_t(b);
+        else{
+            cout << "Error ln_t(y)==0" << endl;
+            return 1;
+        }
+    }
+    cout << "Error y<=0 || x<=0 " << endl;
+    return 1;
 }
 
 decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
@@ -191,9 +221,12 @@ decimal_50_digits funtrans::atan_t(const decimal_50_digits& a){
                 S += S_k;
         }
     }
-    else
-        return 0;
-    return 0;
+    else{
+        cout << "Error x fuera de dominio " << endl;
+        return 1;
+    }
+    cout << "Error x fuera de dominio " << endl;
+    return 1;
 }
 
 decimal_50_digits funtrans::asin_t(const decimal_50_digits& x){
@@ -221,8 +254,10 @@ decimal_50_digits funtrans::asin_t(const decimal_50_digits& x){
         }
         return S;
     }
-    else
-        return 0;
+    else {
+        cout << "Error x fuera de dominio " << endl;
+        return 1;
+    }
 }
 
 decimal_50_digits funtrans::root_t(const decimal_50_digits& x,
@@ -242,7 +277,8 @@ decimal_50_digits funtrans::root_t(const decimal_50_digits& x,
     }
     else
         return  power_t(x, divi_t(y));
-    return 0;
+    cout << "Error x o y fuera de dominio " << endl;
+    return 1;
 }
 
 decimal_50_digits funtrans::exp_t(const decimal_50_digits &x) {
@@ -301,8 +337,10 @@ decimal_50_digits funtrans::tanh_t(const decimal_50_digits& x){
     decimal_50_digits result = cosh_t(x);
     if (result != 0)
         return sinh_t(x) * divi_t(result);
-    else
-        return 0;
+    else {
+        cout << "Error cosh(x)==0, eso esta fuera de dominio " << endl;
+        return 1;
+    }
 }
 
 /* sec_t */
@@ -310,8 +348,10 @@ decimal_50_digits funtrans::sec_t(const decimal_50_digits& x){
     decimal_50_digits result = cos_t(x);
     if (result != 0)
         return 1 * divi_t(result);
-    else
-        return 0;
+    else {
+        cout << "Error x=(k*PI)/2 fuera de dominio " << endl;
+        return 1;
+    }
 }
 
 /* cot_t */
@@ -319,8 +359,10 @@ decimal_50_digits funtrans::cot_t(const decimal_50_digits& x){
     decimal_50_digits result = tan_t(x);
     if (result != 0)
         return 1 * divi_t(result);
-    else
-        return 0;
+    else {
+        cout << "Error x=k*PI fuera de dominio " << endl;
+        return 1;
+    }
 }
 
 decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
@@ -339,7 +381,7 @@ decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
         else
             sk = sk_1;
     }
-    return abs_t(sk);
+    return sk;
 }
 
 decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
@@ -357,22 +399,29 @@ decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
         else
             sk = sk_1;
     }
-    return abs_t(sk);
+    return sk;
 }
 
 decimal_50_digits funtrans::tan_t(const decimal_50_digits& x) {
-    if (cos_t(x) == 0)
-        return 0;
-    else
-        return sin_t(x) * divi_t(cos_t(x));
+    if (cos_t(x) == 0){
+        cout << "Error x=(k*PI)/2 fuera de dominio " << endl;
+        return 1;
+    }
+    else {
+        auto s = sin_t(x);
+        auto c = divi_t(cos_t(x));
+        return s * c;
+    }
 }
 
 decimal_50_digits funtrans::csc_t(decimal_50_digits x) {
     decimal_50_digits result = sin_t(x);
     if (result != 0)
         return 1 * divi_t(result);
-    else
-        return 0;
+    else {
+        cout << "Error x=k*PI fuera de dominio " << endl;
+        return 1;
+    }
 }
 
 decimal_50_digits funtrans::adjust_inter(decimal_50_digits x) {
@@ -386,10 +435,16 @@ decimal_50_digits funtrans::adjust_inter(decimal_50_digits x) {
 }
 
 decimal_50_digits funtrans::sqrt_t(const decimal_50_digits &x) {
-    return power_t(abs_t(x), divi_t(2));
+    if(is_positive_integer(x)){
+        return power_t(abs_t(x), divi_t(2));
+    }
+    else{
+        cout << "Error x<0 fuera de dominio " << endl;
+        return 1;
+    }
 }
 
-decimal_50_digits funtrans::acos(const decimal_50_digits& x) {
+decimal_50_digits funtrans::acos_t(const decimal_50_digits& x) {
     if (x >= -1 && x <= 1) {
         int multp = 0 < x ? 1 : -1;
         return pi_t * 0.5 - multp * asin_t(abs(x));
@@ -397,14 +452,15 @@ decimal_50_digits funtrans::acos(const decimal_50_digits& x) {
     else {
         cout << "x fuera del dominio, "
                 "(x pertenece -1<x<1)" << endl;
-        return 0;
+        return 1;
     }
 }
 
 decimal_50_digits funtrans::log10_t(const decimal_50_digits& x) {
     if (x > 0)
         return log_t(10, x);
-    return 0;
+    cout << "Error x<0 fuera de dominio " << endl;
+    return 1;
 }
 
 decimal_50_digits funtrans::trigonometric_ajust(const decimal_50_digits& x) {
