@@ -188,6 +188,12 @@ void MainWindow::onButtonTanClicked() {
     decimal_50_digits x(ui->lineEditX->text().toStdString());
     resetYAndEqual();
 
+    if(funtrans::is_mult_pi_divi2(x)){
+        showErrorDialog("Valor de x no permitido "
+                        "(x no puede ser (2k+1)*pi/2)");
+        return;
+    }
+
     decimal_50_digits result = funtrans::tan_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
@@ -458,6 +464,12 @@ void MainWindow::onButtonCotClicked() {
         return;
     decimal_50_digits x(ui->lineEditX->text().toStdString());
     resetYAndEqual();
+
+    if(funtrans::is_mult_pi_divi2(x)){
+        showErrorDialog("Valor de x no permitido "
+                        "(x no puede ser (2k+1)*pi/2)");
+        return;
+    }
 
     decimal_50_digits result = funtrans::cot_t(x);
 

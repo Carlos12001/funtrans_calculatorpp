@@ -356,11 +356,17 @@ decimal_50_digits funtrans::sec_t(const decimal_50_digits& x){
 
 /* cot_t */
 decimal_50_digits funtrans::cot_t(const decimal_50_digits& x){
+    if(funtrans::is_mult_pi_divi2(x)){
+        cout << "Valor de x no permitido "
+                        "(x no puede ser (2k+1)*pi/2)" << endl;
+        return 1;
+    }
     decimal_50_digits result = tan_t(x);
+
     if (result != 0)
         return 1 * divi_t(result);
     else {
-        cout << "Error x=k*PI fuera de dominio " << endl;
+        cout << "Error x=(2k+1)*PI/2 fuera de dominio " << endl;
         return 1;
     }
 }
@@ -403,8 +409,13 @@ decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
 }
 
 decimal_50_digits funtrans::tan_t(const decimal_50_digits& x) {
+    if(funtrans::is_mult_pi_divi2(x)){
+        cout << "Valor de x no permitido "
+                "(x no puede ser (2k+1)*pi/2)" << endl;
+        return 1;
+    }
     if (cos_t(x) == 0){
-        cout << "Error x=(k*PI)/2 fuera de dominio " << endl;
+        cout << "Error x=(2k+1)*pi/2 fuera de dominio " << endl;
         return 1;
     }
     else {
