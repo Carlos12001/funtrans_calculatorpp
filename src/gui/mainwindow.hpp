@@ -30,8 +30,6 @@ private:
 
     bool incorrectInputY();
 
-    static bool notRealNumber(const string& s);
-
     void resetYAndEqual();
 
     void resetEqual();

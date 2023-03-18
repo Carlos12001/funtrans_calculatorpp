@@ -1,9 +1,6 @@
 #include "mainwindow.hpp"
-#include <regex>
+#include "ui_mainwindow.h"
 #include "../funtrans/funtrans.hpp"
-#include "./ui_mainwindow.h"
-#include <QTime>
-#include <Qtimer>
 #include <QDesktopServices>
 #include <QMessageBox>
 #include <QRegularExpressionValidator>
@@ -231,7 +228,7 @@ void MainWindow::onButtonLog10Clicked() {
         return;
     }
 
-    decimal_50_digits result = funtrans::log_t(10, x);
+    decimal_50_digits result = funtrans::log10_t(x);
 
     ui->plaintTextEqual->setPlainText(QString(result.str().c_str()));
 }
@@ -588,7 +585,7 @@ bool MainWindow::incorrectInputX(){
         showErrorDialog("Valor de x está vació.");
         return true;
     }
-    else if (notRealNumber(ui->lineEditX->text().toStdString())){
+    else if (funtrans::notRealNumber(ui->lineEditX->text().toStdString())){
         showErrorDialog("Valor de x no es un numero real.");
         return true;
     }
@@ -601,16 +598,10 @@ bool MainWindow::incorrectInputY(){
         showErrorDialog("Valor de y está vació.");
         return true;
     }
-    else if (notRealNumber(ui->lineEditY->text().toStdString())){
+    else if (funtrans::notRealNumber(ui->lineEditY->text().toStdString())){
         showErrorDialog("Valor de y no es un numero real.");
         return true;
     }
     else
         return false;
-}
-
-
-bool MainWindow::notRealNumber(const string& s) {
-    std::regex patron(R"(^-?\d+(\.\d+)?$)");
-    return !(std::regex_match(s, patron));
 }
