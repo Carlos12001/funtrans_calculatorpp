@@ -356,9 +356,10 @@ decimal_50_digits funtrans::sec_t(const decimal_50_digits& x){
 
 /* cot_t */
 decimal_50_digits funtrans::cot_t(const decimal_50_digits& x){
-    if(funtrans::is_mult_pi_divi2(x)){
+    if(is_mult_pi_divi2(x)|| is_mult_pi(x)){
         cout << "Valor de x no permitido "
-                        "(x no puede ser (2k+1)*pi/2)" << endl;
+                        "(x no puede ser (2k+1)*pi/2) "
+                        "(x no puede ser k*pi/2)" << endl;
         return 1;
     }
     decimal_50_digits result = tan_t(x);
@@ -373,6 +374,12 @@ decimal_50_digits funtrans::cot_t(const decimal_50_digits& x){
 
 decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
     x = adjust_inter(x);
+    if(is_mult_pi(x))
+        return 0 ;
+    if(is_mult_pi_divi2(x))
+        return static_cast<int>(round(x / (pi_t*decimal_50_digits("0.5"))))%3!=0
+               ? 1 : -1;;
+
     int n =0;
     decimal_50_digits sk =0;
     decimal_50_digits  sk_1 =0;
@@ -392,6 +399,12 @@ decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
 
 decimal_50_digits funtrans::cos_t(decimal_50_digits x) {
     x = adjust_inter(x);
+    if(is_mult_pi(x))
+        return static_cast<int>(round(x / pi_t))%2!=0
+                ? -1 : 1;
+    if(is_mult_pi_divi2(x))
+        return 0;
+
     decimal_50_digits sk =1;
     decimal_50_digits  sk_1 =0;
     decimal_50_digits error =1;
@@ -489,11 +502,18 @@ decimal_50_digits funtrans::trigonometric_ajust(const decimal_50_digits& x) {
 bool funtrans::is_mult_pi_divi2(const decimal_50_digits &x) {
     decimal_50_digits mult = funtrans::pi_t * decimal_50_digits("0.5");
     decimal_50_digits diff = abs(x - (round(x / mult) * mult));
-    return diff < decimal_50_digits("0.000000001") ||
-    diff > mult - decimal_50_digits("0.000000001");
+    return x!=funtrans::pi_t && (diff < decimal_50_digits("0.000000001") ||
+    diff > mult - decimal_50_digits("0.000000001"));
 }
 
 bool funtrans::notRealNumber(const string &s) {
     std::regex patron(R"(^-?\d+(\.\d+)?$)");
     return !(std::regex_match(s, patron));
+}
+
+bool funtrans::is_mult_pi(const decimal_50_digits &x) {
+    decimal_50_digits mult = funtrans::pi_t;
+    decimal_50_digits diff = abs(x - (round(x / mult) * mult));
+    return diff < decimal_50_digits("0.000000001") ||
+           diff > mult - decimal_50_digits("0.000000001");
 }

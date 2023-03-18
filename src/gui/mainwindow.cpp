@@ -465,9 +465,10 @@ void MainWindow::onButtonCotClicked() {
     decimal_50_digits x(ui->lineEditX->text().toStdString());
     resetYAndEqual();
 
-    if(funtrans::is_mult_pi_divi2(x)){
+    if(funtrans::is_mult_pi_divi2(x)||funtrans::is_mult_pi(x)){
         showErrorDialog("Valor de x no permitido "
-                        "(x no puede ser (2k+1)*pi/2)");
+                        "(x no puede ser (2k+1)*pi/2) "
+                        "(x no puede ser k*pi/2)");
         return;
     }
 
