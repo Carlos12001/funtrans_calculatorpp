@@ -16,6 +16,7 @@
  */
 int main(int argc, char *argv[]) {
     Test();
+//    while (getchar() != '\n');
     return InitGUI::start(argc, argv);
     return 0;
 }
