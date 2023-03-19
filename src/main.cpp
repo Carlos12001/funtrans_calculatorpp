@@ -1,5 +1,5 @@
 #include "header.hpp"
-#include "gui/init_gui.hpp"
+//#include "gui/init_gui.hpp"
 #include "test/test_funtras.hpp"
 
 /**
@@ -16,7 +16,7 @@
  */
 int main(int argc, char *argv[]) {
     Test();
-//    while (getchar() != '\n');
-    return InitGUI::start(argc, argv);
+    while (getchar() != '\n');
+//    return InitGUI::start(argc, argv);
     return 0;
 }
