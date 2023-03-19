@@ -7,6 +7,17 @@
 #include "../header.hpp"
 #include <regex>
 
+/**
+ * @brief A class that provides mathematical functions and constants, implemented
+ *        using decimal precision with 50 digits.
+ *
+ * The `funtrans` class provides a range of mathematical functions and constants
+ * that are implemented using decimal precision with 50 digits. These functions
+ * include trigonometric, logarithmic, and exponential functions, as well as
+ * functions for calculating roots and factorials. The class also provides
+ * several methods for checking the properties of numbers and adjusting input
+ * values to be within certain ranges.
+ */
 class funtrans {
 public:
 
