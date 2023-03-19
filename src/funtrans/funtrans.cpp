@@ -200,7 +200,6 @@ int funtrans::exponent_eps_aux_divi_t(const decimal_50_digits& x) {
         return 0;
 }
 
-
 /**
  * @brief Compute the absolute value of the given decimal number a.
  *
@@ -217,7 +216,6 @@ decimal_50_digits funtrans::abs_t(const decimal_50_digits& a){
     else
         return a;
 }
-
 
 /**
  * @brief Compute the natural logarithm of the given decimal number x.
