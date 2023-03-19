@@ -8,6 +8,9 @@
 #include <iostream>
 using namespace std;
 
+/*Includes Boost Multiprecision library, which provides cpp_dec_float
+ * for arbitrary-precision decimal math.
+*/
 #include <boost/multiprecision/cpp_dec_float.hpp>
 typedef boost::multiprecision::cpp_dec_float_50 decimal_50_digits;
 
