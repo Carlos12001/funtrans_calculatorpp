@@ -618,7 +618,7 @@ decimal_50_digits funtrans::sin_t(decimal_50_digits x) {
         return 0 ;
     if(is_mult_pi_divi2(x))
         return static_cast<int>(round(x / (pi_t*decimal_50_digits("0.5"))))%3!=0
-               ? 1 : -1;;
+               ? 1 : -1;
 
     int n =0;
     decimal_50_digits sk =0;
