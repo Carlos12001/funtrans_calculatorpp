@@ -4,12 +4,39 @@
 
 #include "test_funtras.hpp"
 
-Test::Test(){
+/**
+ * Constructor for the `Test` class.
+ *
+ * This constructor initializes a new instance of the `Test` class.
+ * It prints a message to the console
+ * indicating that a test is being performed, and then calls the
+ * `test_funtras()` function to perform
+ * some tests related to `funtras`.
+ *
+ * Note that the `all()` function has been commented out and is not being
+ * called in this constructor.
+ *
+ * @see Test::test_funtras()
+ */
+Test::Test() {
 //    all();
     cout << "--------- Prueba --------" << endl << endl
          << fixed << test_funtras().str() << endl;
 }
 
+/**
+ * Function to perform all tests.
+ *
+ * This function performs a series of tests on various functions in the
+ * `funtrans` namespace. The
+ * output of each test is printed to the console.
+ *
+ * Note that the function uses the `cout` object to print output to the
+ * console, and includes calls
+ * to various functions from the `funtrans` namespace.
+ *
+ * @see funtrans
+ */
 void Test::all() {
     cout <<  fixed << setprecision(8)
     << "pi_t = " << funtrans::pi_t << endl
@@ -94,6 +121,23 @@ void Test::all() {
                                 funtrans::divi_t(2.0) + 0.2)    << endl;
 }
 
+/**
+ * Function to test various functions in the `funtrans` namespace.
+ *
+ * This function tests various functions in the `funtrans` namespace,
+ * including `root_t`, `cos_t`,
+ * `divi_t`, `ln_t`, `sinh_t`, `sqrt_t`, and `atan_t`. The result of the
+ * tests is returned as a
+ * `decimal_50_digits` object.
+ *
+ * Note that the function uses the `cout` object to print output to the
+ * console, and includes calls
+ * to various functions from the `funtrans` namespace.
+ *
+ * @return A `decimal_50_digits` object representing the result of the tests.
+ *
+ * @see funtrans
+ */
 decimal_50_digits Test::test_funtras() {
     cout << "(root(cos(3/7)+ln(2),  3))/sinh(sqrt(2)) + arctan(1/e) = \n";
     decimal_50_digits result =
